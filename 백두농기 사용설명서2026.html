@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>백두농기 미니관리기 사용설명서 (4행정 198cc)</title>
+<style>
+  :root{--primary:#1B5E20;--accent:#FF6F00;--bg:#F5F5F0;--card:#fff;--text:#212121;--sub:#616161;--border:#E0E0E0;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08);--max-w:800px}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif;background:var(--bg);color:var(--text);line-height:1.78}
+  .wrap{max-width:var(--max-w);margin:0 auto;padding:32px 48px}
+  @media(max-width:600px){.wrap{padding:16px 18px}}
+  .cover{background:linear-gradient(135deg,var(--primary),#2E7D32);color:#fff;border-radius:var(--radius);text-align:center;padding:60px 32px 48px;margin-bottom:40px;box-shadow:var(--shadow)}
+  .cover img.logo{height:96px;margin-bottom:16px;background:#fff;padding:10px 20px;border-radius:8px}
+  .cover h1{font-size:28px;margin-bottom:6px;letter-spacing:-.5px}
+  .cover h2{font-size:16px;font-weight:400;opacity:.85;margin-bottom:24px}
+  .cover img.hero{width:70%;max-width:360px;border-radius:var(--radius);border:4px solid rgba(255,255,255,.3);margin-bottom:24px}
+  .cover .info{font-size:13px;opacity:.7}
+  .sec{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:36px 40px;margin-bottom:32px}
+  @media(max-width:600px){.sec{padding:24px 18px}}
+  .sec h3{font-size:20px;color:var(--primary);border-left:4px solid var(--accent);padding-left:14px;margin-bottom:20px}
+  .sec h4{font-size:16px;color:var(--accent);margin:24px 0 10px}
+  .sec p,.sec li{font-size:14.5px}
+  .sec ul{padding-left:20px;margin:8px 0 16px}
+  .sec ul li{margin-bottom:6px}
+  .sec ol{padding-left:22px;margin:8px 0 16px}
+  .sec ol li{margin-bottom:8px}
+  table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:14px}
+  th{background:var(--primary);color:#fff;padding:10px 12px;text-align:left;font-weight:600}
+  td{padding:9px 12px;border-bottom:1px solid var(--border)}
+  tr:nth-child(even) td{background:#FAFAFA}
+  .img-row{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+  .img-row img{flex:1 1 200px;max-width:48%;border-radius:8px;border:1px solid var(--border)}
+  .img-single{display:block;max-width:90%;margin:14px auto;border-radius:8px;border:1px solid var(--border)}
+  @media(max-width:500px){.img-row img{max-width:100%}}
+  .warn{background:#FFF3E0;border-left:4px solid var(--accent);padding:14px 18px;border-radius:6px;margin:14px 0;font-size:14px}
+  .danger{background:#FFEBEE;border-left:4px solid #C62828;padding:14px 18px;border-radius:6px;margin:14px 0;font-size:14px}
+  .toc a{text-decoration:none;color:var(--primary);font-size:15px;display:block;padding:6px 0;border-bottom:1px dashed var(--border)}
+  .toc a:hover{color:var(--accent)}
+  .footer{text-align:center;padding:24px;font-size:13px;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ═══ 표지 ═══ -->
+<div class="cover">
+  <img class="logo" src="https://lh3.googleusercontent.com/d/1BefjpCuZaWUO1MhiPH38-aHV-M7e4Wfu" alt="백두농기">
+  <h1>미니 관리기 사용설명서</h1>
+  <h2>4행정 198cc 모델</h2>
+  <img class="hero" src="https://lh3.googleusercontent.com/d/1jXfvfrSiYbHxp93zvVWwOxXtRZDyTnfZ" alt="제품 대표">
+  <p class="info">백두농기 ｜ A/S 문의 010-3019-8259</p>
+</div>
+
+<!-- ═══ 목차 ═══ -->
+<div class="sec">
+  <h3>목 차</h3>
+  <div class="toc">
+    <a href="#s01">01. 제품 소개 및 구성품</a>
+    <a href="#s02">02. 안전 주의사항</a>
+    <a href="#s03">03. 안전 경고 표시</a>
+    <a href="#s04">04. 제품 각부 명칭</a>
+    <a href="#s05">05. 제품 사양</a>
+    <a href="#s06">06. 조립 방법</a>
+    <a href="#s07">07. 시동 방법</a>
+    <a href="#s08">08. 운전 및 작업</a>
+    <a href="#s09">09. 유지·보수</a>
+    <a href="#s10">10. 고장 진단</a>
+    <a href="#s11">11. 보관 요령</a>
+    <a href="#s12">12. 보증 및 A/S 안내</a>
+  </div>
+</div>
+
+<!-- ═══ 01 ═══ -->
+<div class="sec" id="s01">
+  <h3>01. 제품 소개 및 구성품</h3>
+  <p>본 제품은 <strong>4행정 198cc 공냉식 OHV 가솔린 엔진</strong>을 탑재한 소형 경량 미니 관리기입니다. 가정 텃밭, 소규모 농장, 조경 작업(경운·배토·고랑 파기)에 적합하며 무연 휘발유를 단독 사용합니다(혼합유 사용 금지).</p>
+  <h4>기본 구성품</h4>
+  <table>
+    <tr><th>품목</th><th>수량</th></tr>
+    <tr><td>본체(엔진+프레임)</td><td>1</td></tr>
+    <tr><td>경작날(로터리 블레이드) 세트</td><td>1</td></tr>
+    <tr><td>이동용 보조바퀴+깊이조절판(일체형)</td><td>1</td></tr>
+    <tr><td>핸들 프레임 + 볼트 세트</td><td>1</td></tr>
+    <tr><td>흙받이 커버(안전 가드)</td><td>1</td></tr>
+    <tr><td>엔진오일</td><td>1</td></tr>
+    <tr><td>사용설명서 / 보증서(웹발송)</td><td>각 1</td></tr>
+  </table>
+  <div class="warn">📦 수령 즉시 구성품 전체를 확인하시고, 누락·파손 시 판매처(010-3019-8259)로 연락해 주십시오.</div>
+</div>
+
+<!-- ═══ 02 ═══ -->
+<div class="sec" id="s02">
+  <h3>02. 안전 주의사항</h3>
+  <img class="img-single" src="https://lh3.googleusercontent.com/d/131nwErdvPixwgc855ktgAk1Tism4Rc6K" alt="안전 경고 라벨(fuel-tank)">
+  <div class="danger">⛔ <strong>위험</strong> — 반드시 사용 전 본 설명서를 끝까지 읽으십시오. 어린이·교육받지 않은 사람의 조작을 금지합니다.</div>
+  <h4>보호 장비</h4>
+  <ul>
+    <li>보안경, 가죽 장갑, 안전화(발가락 보호), 귀마개 착용 필수</li>
+    <li>헐렁한 옷, 넥타이, 목걸이 등 회전부에 감길 수 있는 물건 제거</li>
+  </ul>
+  <h4>작업 전 점검</h4>
+  <ul>
+    <li>작업 구역의 돌, 금속 조각, 유리, 전선 등 이물질 제거</li>
+    <li>급경사지·젖은 노면 작업 금지, 악천후 시 사용 중단</li>
+    <li>볼트·너트 조임 상태, 연료 누유 여부 확인</li>
+  </ul>
+  <h4>연료 취급</h4>
+  <ul>
+    <li>연료는 무연 휘발유만 사용 (2행정 혼합유 절대 사용 금지)</li>
+    <li>급유 시 엔진을 반드시 정지하고, 화기·전기 불꽃이 없는 환기 장소에서 실시</li>
+    <li>연료가 피부·눈에 닿으면 즉시 다량의 물로 세척 후 의사 상담</li>
+  </ul>
+  <h4>운전 중</h4>
+  <ul>
+    <li>회전 중인 경작날에 절대 손·발 접근 금지</li>
+    <li>양손으로 핸들을 잡고, 작업 반경 15m 이내에 타인이 없는지 확인</li>
+    <li>이상 진동·소음·냄새 발생 시 즉시 엔진 정지</li>
+  </ul>
+</div>
+
+<!-- ═══ 03 ═══ -->
+<div class="sec" id="s03">
+  <h3>03. 안전 경고 표시</h3>
+  <table>
+    <tr><th>표시</th><th>의미</th><th>색상</th></tr>
+    <tr><td>⛔ 위험</td><td>지키지 않으면 사망·중상 위험</td><td>빨강</td></tr>
+    <tr><td>⚠️ 경고</td><td>지키지 않으면 상해·화재 위험</td><td>주황</td></tr>
+    <tr><td>🔧 주의</td><td>제품 손상·고장 가능</td><td>노랑</td></tr>
+  </table>
+  <p>제품 본체에 부착된 경고 스티커를 임의 제거하지 마십시오. 훼손 시 교체 스티커를 요청하십시오.</p>
+</div>
+
+<!-- ═══ 04 ═══ -->
+<div class="sec" id="s04">
+  <h3>04. 제품 각부 명칭</h3>
+  <img class="img-single" src="https://lh3.googleusercontent.com/d/12jHLqUwZzci7-NMfprKqaSww7oTOqega" alt="각부 명칭(2.png)">
+  <table>
+    <tr><th>번호</th><th>명칭</th><th>기능</th></tr>
+    <tr><td>①</td><td>핸들 프레임</td><td>조향 및 조작</td></tr>
+    <tr><td>②</td><td>연료 캡</td><td>연료 탱크 개폐</td></tr>
+    <tr><td>③</td><td>스로틀 레버</td><td>엔진 회전수 조절</td></tr>
+    <tr><td>④</td><td>리코일 스타터</td><td>수동 시동</td></tr>
+    <tr><td>⑤</td><td>초크 레버</td><td>냉간 시동 보조</td></tr>
+    <tr><td>⑥</td><td>경작날(로터리)</td><td>토양 경운</td></tr>
+    <tr><td>⑦</td><td>이동용 보조바퀴</td><td>비작업 시 이동</td></tr>
+    <tr><td>⑧</td><td>깊이 조절판(보습)</td><td>경운 깊이 설정</td></tr>
+    <tr><td>⑨</td><td>흙받이 커버</td><td>흙·돌 비산 방지</td></tr>
+    <tr><td>⑩</td><td>에어 필터</td><td>흡기 이물질 차단</td></tr>
+  </table>
+</div>
+
+<!-- ═══ 05 ═══ -->
+<div class="sec" id="s05">
+  <h3>05. 제품 사양</h3>
+  <table>
+    <tr><th>항목</th><th>사양</th></tr>
+    <tr><td>모델명</td><td>4행정 198cc</td></tr>
+    <tr><td>엔진 형식</td><td>공냉식 4행정 OHV 가솔린</td></tr>
+    <tr><td>배기량</td><td>198 cc</td></tr>
+    <tr><td>최대 출력</td><td>4.8 kW (6.5 HP)</td></tr>
+    <tr><td>공회전 속도</td><td>1,200 rpm</td></tr>
+    <tr><td>작업 회전수</td><td>9,600 rpm</td></tr>
+    <tr><td>연료</td><td>무연 휘발유</td></tr>
+    <tr><td>연료 탱크</td><td>1,200 mL</td></tr>
+    <tr><td>엔진 오일</td><td>4T SAE 10W-30 이상 / 약 150 mL</td></tr>
+    <tr><td>점화 방식</td><td>TCI (트랜지스터 점화)</td></tr>
+    <tr><td>점화 플러그</td><td>F7RTC (갭 0.6–0.7 mm)</td></tr>
+    <tr><td>경운 폭</td><td>약 43 cm</td></tr>
+    <tr><td>경운 깊이</td><td>10–25 cm (보습 조절)</td></tr>
+    <tr><td>시동 방식</td><td>수동 리코일</td></tr>
+  </table>
+  <div class="warn">※ 사양은 품질 개선을 위해 사전 공지 없이 변경될 수 있습니다.</div>
+</div>
+
+<!-- ═══ 06 ═══ -->
+<div class="sec" id="s06">
+  <h3>06. 조립 방법</h3>
+  <p>포장 해제 후 아래 순서에 따라 조립하십시오. 볼트 체결 시 규정 토크로 균등하게 조여 주십시오.</p>
+
+  <h4>① 경작날 장착(교체시 참고)</h4>
+  <div class="img-row"><img src="https://lh3.googleusercontent.com/d/1toHAPxXDg_Mi78gR5NxdRv8dOHEXQZvb" alt="경작날(blade)"></div>
+  <ol>
+    <li>하부 구동축에 경작날 세트를 방향에 맞춰 삽입합니다 (칼날 회전 방향 화살표 확인).</li>
+    <li>고정 볼트와 스프링 와셔를 끼운 뒤 렌치로 단단히 조입니다.</li>
+    <li>날이 좌우 동일 간격인지 확인합니다.</li>
+  </ol>
+
+  <h4>② 흙받이 커버(안전 가드) 장착</h4>
+  <div class="img-row"><img src="https://lh3.googleusercontent.com/d/1PUt3mbLmGejiqs9RDTieNXtN4G2bugoc" alt="흙받이 커버(3.png)"></div>
+  <ol>
+    <li>커버 브래킷을 프레임 지정 위치에 맞추고 피스 볼트로 고정합니다.</li>
+    <li>2026년형 신형제품의 경우 프레임 커버 길이개선으로 필수부착사항x </li>
+    <li>작업 시 흙·돌 비산을 방지하므로 반드시 장착 후 사용하십시오.</li>
+  </ol>
+
+  <h4>③ 핸들 프레임 장착</h4>
+  <div class="img-row">
+    <img src="https://lh3.googleusercontent.com/d/1x_FlSTU4vsF-PpOWNhT6UW2dUmoNzX3j" alt="핸들(4.png)">
+    <img src="https://lh3.googleusercontent.com/d/1-mXyRT3uubiKLQb6OMVNIWL_53CE90o7" alt="핸들(5.png)">
+  </div>
+  <ol>
+    <li>핸들 프레임 하단의 구멍을 본체 브래킷 구멍에 맞춥니다.</li>
+    <li>볼트 2개를 삽입하고 너트를 조여 고정합니다.</li>
+    <li>사용자 키에 맞게 핸들 각도를 조절한 뒤 잠금 볼트를 조입니다.</li>
+  </ol>
+  <div class="img-row">
+    <img src="https://lh3.googleusercontent.com/d/1J-bCCD9XijuhS--M_aLVtlIzzNTVRMKN" alt="핸들 완성(handle-done)">
+    <img src="https://lh3.googleusercontent.com/d/1NyhhJJQcMutQ6ucO-ZjBfgqPsbLv4qul" alt="핸들 각도(handle-angle)">
+  </div>
+
+  <h4>④ 스로틀 와이어 연결 확인</h4>
+  <div class="img-row">
+    <img src="https://lh3.googleusercontent.com/d/1Q2i0mHh4wfcIrbknU8ozw5PSHkn7YVwY" alt="핸들 홀(handle-hole)">
+    <img src="https://lh3.googleusercontent.com/d/1jQeIG_NmqsWXFBWDpD2V2JDXMTAooZoj" alt="스로틀(throttle1)">
+  </div>
+  <ol>
+    <li>핸들의 스로틀 레버를 움직여 와이어가 원활하게 작동하는지 확인합니다.</li>
+    <li>볼트와 너트를 끝까지 체결하여 스로틀을 정확히 고정시킵니다.</li>
+  </ol>
+
+  <h4>⑤ 에어 필터 장착 확인</h4>
+  <div class="img-row">
+    <img src="https://lh3.googleusercontent.com/d/13ADA1PLmFImLcBh-fweua4yFKR6gFIU4" alt="에어 필터(airfilter)">
+    <img src="https://lh3.googleusercontent.com/d/1EzrWZSpRDcaGHdNPFLuLBpwMi4lQhnEP" alt="에어 필터(7.png)">
+  </div>
+  <p>에어 필터 커버를 열어 필터 엘리먼트가 올바르게 장착되어 있는지 확인합니다. 운송 중 빠질 수 있으므로 꼭 점검하십시오.</p>
+
+  <div class="warn">⚠️ 모든 조립이 끝난 뒤 각 볼트를 한 번 더 점검하고, 경작날을 손으로 돌려 간섭이 없는지 확인하십시오.</div>
+</div>
+
+<!-- ═══ 07 ═══ -->
+<div class="sec" id="s07">
+  <h3>07. 시동 방법</h3>
+
+  <h4>A. 엔진 오일 주입 (최초 사용 시)</h4>
+  <div class="img-row"><img src="https://lh3.googleusercontent.com/d/1t3b7xHwUW-iItbdknTbFk432BkPhiHHX" alt="오일 캡(oil-cap)"></div>
+  <ol>
+    <li>오일 주입구 캡을 열고 4행정 엔진 오일(SAE 10W-30)을 약 130~150mL 주입합니다.</li>
+    <li>딥스틱 게이지 상한선(FULL)까지 차 있는지 확인 후 캡을 닫습니다.</li>
+  </ol>
+
+  <h4>B. 연료 주입</h4>
+  <div class="img-row"><img src="https://lh3.googleusercontent.com/d/131nwErdvPixwgc855ktgAk1Tism4Rc6K" alt="연료탱크(fuel-tank)"></div>
+  <ol>
+    <li>연료 캡을 열고 무연 휘발유를 탱크 적당량 주입합니다.</li>
+    <li>캡을 단단히 닫고 연료 누유가 없는지 확인합니다.</li>
+  </ol>
+  <div class="danger">⛔ 엔진 가동 중이나 엔진이 뜨거울 때 급유하지 마십시오. 화재 위험이 있습니다.</div>
+
+  <h4>C. 시동 절차</h4>
+  <ol>
+    <li><strong>연료 밸브 열기</strong> — 연료 콕을 ON 위치로 돌립니다.</li>
+    <li><strong>점화 스위치 ON</strong> — 스위치를 ON으로 설정합니다.</li>
+    <li><strong>초크 닫기</strong> — 냉간 시동 시 초크 레버를 CLOSE(닫힘)로 놓습니다.</li>
+    <li><strong>프라이밍</strong> — 프라이밍 펌프(있는 경우)를 5–10회 눌러 연료를 기화기로 보냅니다.</li>
+    <li><strong>리코일 당기기</strong> — 한 손으로 본체를 고정하고, 다른 손으로 리코일 손잡이를 힘차게 당깁니다.</li>
+    <li><strong>초크 열기</strong> — 엔진이 걸린 후 30초–1분 뒤 초크를 서서히 OPEN으로 이동합니다.</li>
+  </ol>
+  <p>엔진 시동 후 2–3분간 공회전으로 워밍업한 뒤 작업을 시작하십시오.</p>
+
+  <h4>시동이 걸리지 않을 때</h4>
+  <table>
+    <tr><th>증상</th><th>점검 사항</th></tr>
+    <tr><td>리코일을 당겨도 반응 없음</td><td>연료 밸브 ON 확인, 연료 잔량 확인</td></tr>
+    <tr><td>시동 직후 꺼짐</td><td>초크 OPEN 타이밍, 에어 필터 막힘</td></tr>
+    <tr><td>스파크 없음</td><td>점화 플러그 상태, 플러그 갭(0.6–0.7 mm)</td></tr>
+  </table>
+</div>
+
+<!-- ═══ 08 ═══ -->
+<div class="sec" id="s08">
+  <h3>08. 운전 및 작업</h3>
+  <h4>기본 운전</h4>
+  <ol>
+    <li>워밍업 후 스로틀 레버를 서서히 올려 원하는 회전수에 맞춥니다.</li>
+    <li>기어를 저속(1단)에 놓고 클러치를 연결하면 경작날이 회전하며 전진합니다.</li>
+    <li>직진 상태를 유지하며 양손으로 핸들을 잡고 걷는 속도로 작업합니다.</li>
+  </ol>
+  <h4>경운 깊이 조절</h4>
+  <p>보습(깊이 조절판)의 고정 핀 위치를 변경하면 10cm(얕게)~40cm(깊게)까지 조절할 수 있습니다. 단단한 토양에서는 얕게 1차 경운 후 깊이를 늘려 2차 작업하는 것이 효과적입니다.</p>
+  <h4>작업 중 안전 수칙</h4>
+  <ul>
+    <li>돌·금속 등 장애물에 날이 부딪히면 즉시 엔진을 끄고 날 상태를 점검합니다.</li>
+    <li>방향 전환 시에는 스로틀을 줄이고 천천히 핸들을 돌립니다.</li>
+    <li>경사지(15° 이상)에서의 사용을 삼가고, 부득이할 경우 아래에서 위로 작업합니다.</li>
+    <li>매 30분 작업 후 5–10분 휴식하여 엔진 과열을 방지합니다.</li>
+  </ul>
+</div>
+
+<!-- ═══ 09 ═══ -->
+<div class="sec" id="s09">
+  <h3>09. 유지·보수</h3>
+  <h4>정기 점검 일람표</h4>
+  <table>
+    <tr><th>항목</th><th>매 사용 전·후</th><th>최초 20h</th><th>50h마다</th><th>100h마다</th></tr>
+    <tr><td>엔진 오일 잔량</td><td>✔</td><td></td><td></td><td></td></tr>
+    <tr><td>엔진 오일 교환</td><td></td><td>✔</td><td></td><td>✔</td></tr>
+    <tr><td>에어 필터 청소</td><td>✔</td><td></td><td></td><td></td></tr>
+    <tr><td>에어 필터 교환</td><td></td><td></td><td></td><td>✔</td></tr>
+    <tr><td>점화 플러그 점검</td><td></td><td></td><td>✔</td><td></td></tr>
+    <tr><td>점화 플러그 교환</td><td></td><td></td><td></td><td>✔</td></tr>
+    <tr><td>연료 호스·필터 점검</td><td></td><td></td><td>✔</td><td></td></tr>
+    <tr><td>경작날 마모 확인</td><td>✔</td><td></td><td></td><td></td></tr>
+    <tr><td>볼트·너트 조임 확인</td><td>✔</td><td></td><td></td><td></td></tr>
+  </table>
+  <h4>엔진 오일 교환</h4>
+  <ol>
+    <li>엔진을 3분 정도 가동하여 오일을 따뜻하게 합니다.</li>
+    <li>오일 배출 볼트를 열고 폐유를 받아냅니다.</li>
+    <li>배출 볼트를 다시 조인 뒤 새 오일(SAE 10W-30, 약 600 mL)을 주입합니다.</li>
+    <li>딥스틱으로 유량을 확인합니다.</li>
+  </ol>
+  <h4>점화 플러그</h4>
+  <div class="img-row"><img src="https://lh3.googleusercontent.com/d/1WG8hxyiR8u_x5xo-f7As8mTJNJY5U9KI" alt="점화 플러그(spark-plug)"></div>
+  <ol>
+    <li>플러그 캡을 빼고 플러그 렌치로 분리합니다.</li>
+    <li>전극 상태를 확인 — 카본이 심하면 와이어 브러시로 청소합니다.</li>
+    <li>전극 갭: 0.6–0.7 mm (두께 게이지로 확인).</li>
+    <li>심하게 마모·손상된 경우 새 플러그(F7RTC)로 교환합니다.</li>
+  </ol>
+  <h4>에어 필터</h4>
+  <div class="img-row">
+    <img src="https://lh3.googleusercontent.com/d/1EiV0DDoPcCM0Dqqhj_n1vZyBMsCljNcw" alt="에어 필터(8.png)">
+    <img src="https://lh3.googleusercontent.com/d/1Ia5-0VkU13H74RKDi0giN_EBtAuyibKx" alt="에어 필터(9.png)">
+  </div>
+  <ol>
+    <li>에어 필터 커버를 열고 엘리먼트를 꺼냅니다.</li>
+    <li>가벼운 먼지는 톡톡 털어 제거하고, 오염이 심하면 중성 세제로 세척 후 완전 건조합니다.</li>
+    <li>스펀지 타입의 경우 소량의 엔진 오일을 묻혀 짠 뒤 재장착합니다.</li>
+  </ol>
+</div>
+
+<!-- ═══ 10 ═══ -->
+<div class="sec" id="s10">
+  <h3>10. 고장 진단</h3>
+  <table>
+    <tr><th>증상</th><th>가능한 원인</th><th>조치</th></tr>
+    <tr><td>시동 안 걸림</td><td>연료 부족 / 밸브 닫힘 / 플러그 불량</td><td>연료 보충, 밸브 ON, 플러그 청소·교환</td></tr>
+    <tr><td>시동 후 바로 꺼짐</td><td>초크 미개방 / 에어 필터 막힘</td><td>초크 OPEN, 필터 청소</td></tr>
+    <tr><td>출력 부족</td><td>에어 필터 오염 / 플러그 갭 이상 / 연료 부족</td><td>필터 청소, 갭 재조정, 연료 보충</td></tr>
+    <tr><td>엔진 과열</td><td>오일 부족 / 냉각핀 막힘</td><td>오일 보충, 냉각핀 청소</td></tr>
+    <tr><td>과도한 진동</td><td>경작날 파손·불균형 / 볼트 풀림</td><td>날 교체, 볼트 재조임</td></tr>
+    <tr><td>경작날 회전 안 됨</td><td>클러치 불량 / 벨트 마모</td><td>A/S 센터 점검 필요</td></tr>
+  </table>
+  <div class="warn">⚠️ 위 조치로 해결되지 않는 경우 무리하게 분해하지 마시고 백두농기 A/S(010-3019-8259)로 문의하십시오.</div>
+</div>
+
+<!-- ═══ 11 ═══ -->
+<div class="sec" id="s11">
+  <h3>11. 보관 요령</h3>
+  <h4>일반 보관 (1주 이내)</h4>
+  <ol>
+    <li>엔진을 정지하고 본체·경작날에 묻은 흙을 깨끗이 제거합니다.</li>
+    <li>연료 밸브를 OFF로 놓습니다.</li>
+    <li>직사광선과 빗물을 피해 건조한 실내에 보관합니다.</li>
+  </ol>
+  <h4>장기 보관 (1개월 이상)</h4>
+  <ol>
+    <li>연료 탱크의 연료를 모두 빼고, 엔진을 가동하여 기화기 내 잔류 연료를 소진합니다.</li>
+    <li>엔진 오일을 새것으로 교환합니다.</li>
+    <li>점화 플러그 구멍으로 엔진 오일 소량(5 mL)을 넣고 리코일을 2–3회 당겨 실린더 내벽에 유막을 형성합니다.</li>
+    <li>경작날·금속 부위에 방청유를 도포합니다.</li>
+    <li>커버를 씌워 먼지가 쌓이지 않도록 보관합니다.</li>
+  </ol>
+  <div class="warn">⚠️ 연료를 넣은 채로 밀폐된 공간에 장기 보관하면 증기 폭발·화재 위험이 있습니다.</div>
+</div>
+
+<!-- ═══ 12 ═══ -->
+<div class="sec" id="s12">
+  <h3>12. 보증 및 A/S 안내</h3>
+  <h4>판매처 정보</h4>
+  <table>
+    <tr><th>상호</th><td>백두농기</td></tr>
+    <tr><th>A/S 전화</th><td><strong>010-3019-8259</strong></td></tr>
+    <tr><th>상담 시간</th><td>평일 09:00 – 18:00 (공휴일 휴무)</td></tr>
+  </table>
+  <h4>보증 조건</h4>
+  <ul>
+    <li>보증 기간: 구매일로부터 <strong>6개월</strong> (영수증·보증서 지참 시 적용)</li>
+    <li>보증 범위: 정상 사용 중 발생한 제조 결함에 한해 무상 수리 또는 부품 교환</li>
+  </ul>
+  <h4>보증 제외 사항</h4>
+  <ul>
+    <li>사용자 과실 (충격, 침수, 잘못된 연료·오일 사용 등)</li>
+    <li>무단 분해·개조 또는 비공인 수리</li>
+    <li>소모품 자연 마모 (경작날, 에어 필터, 점화 플러그, 벨트 등)</li>
+    <li>영수증·보증서 미제출 시</li>
+  </ul>
+  <div class="img-row"><img src="https://lh3.googleusercontent.com/d/1BefjpCuZaWUO1MhiPH38-aHV-M7e4Wfu" alt="백두농기 로고(logo)"></div>
+  <div class="warn">📞 고장·문의 시 구매 일자, 모델명(4행정 198cc), 증상을 알려 주시면 신속히 안내드리겠습니다.</div>
+</div>
+
+<!-- ═══ 푸터 ═══ -->
+<div class="footer">
+  <p>© 백두농기 — 4행정 198cc 미니 관리기 사용설명서</p>
+  <p>본 문서의 내용은 제품 개선을 위해 사전 공지 없이 변경될 수 있습니다.</p>
+  <p>A/S 문의: <strong>010-3019-8259</strong></p>
+</div>
+
+</div>
+</body>
+</html>
