@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌿 한국 텃밭 재배 캘린더 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --seed: #f4a72a;
+    --seedling: #7bc142;
+    --transplant: #2196F3;
+    --grow: #a8d5a2;
+    --fertilize: #e67e22;
+    --spray: #9b59b6;
+    --harvest: #e74c3c;
+    --fieldprep: #795548;
+    --bg: #f5f9f0;
+    --card: #ffffff;
+    --header: #2d6a1f;
+    --header2: #4a9b2f;
+    --text: #2c3e50;
+    --border: #d5e8cc;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: linear-gradient(135deg, #1a5c0e 0%, #2d8c1f 40%, #4aaf32 100%);
+    color: white;
+    padding: 28px 32px 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '🌿🌱🌾🍅🥕🧅🌽🥦🍆🥒';
+    position: absolute;
+    font-size: 1.6rem;
+    opacity: 0.12;
+    top: 8px;
+    left: 0;
+    right: 0;
+    letter-spacing: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .header-top { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .header-icon { font-size: 2.8rem; }
+  .header-title { font-size: 2rem; font-weight: 900; letter-spacing: -1px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+  .header-subtitle { font-size: 0.92rem; opacity: 0.88; margin-top: 2px; font-weight: 300; }
+  .header-meta { margin-top: 10px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .meta-badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  /* ── LEGEND ── */
+  .legend-wrap {
+    background: white;
+    border-bottom: 2px solid var(--border);
+    padding: 14px 32px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .legend-label { font-size: 0.78rem; font-weight: 700; color: #555; margin-right: 4px; }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #333;
+  }
+  .legend-dot {
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── CONTROLS ── */
+  .controls {
+    padding: 14px 32px;
+    background: #f8fdf4;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .filter-btn {
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: white;
+    font-size: 0.8rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    font-weight: 500;
+    color: #555;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--header2);
+    border-color: var(--header2);
+    color: white;
+  }
+  .filter-label { font-size: 0.82rem; font-weight: 700; color: #666; }
+
+  /* ── TABLE CONTAINER ── */
+  .table-container {
+    padding: 20px 24px;
+    overflow-x: auto;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 1100px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    font-size: 0.76rem;
+  }
+
+  /* ── MONTH HEADER ── */
+  .th-month {
+    background: linear-gradient(180deg, #2d6a1f, #3d8a28);
+    color: white;
+    text-align: center;
+    padding: 8px 0 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    position: relative;
+  }
+  .th-month .season-tag {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-top: 1px;
+  }
+  .th-season-spring { background: linear-gradient(180deg, #388e3c, #4caf50); }
+  .th-season-summer { background: linear-gradient(180deg, #e65100, #f57c00); }
+  .th-season-autumn { background: linear-gradient(180deg, #bf360c, #e64a19); }
+  .th-season-winter { background: linear-gradient(180deg, #1565c0, #1976d2); }
+
+  /* ── DECADE HEADER (상/중/하) ── */
+  .th-decade {
+    background: #e8f5e9;
+    color: #1b5e20;
+    text-align: center;
+    padding: 4px 2px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    border-bottom: 2px solid #c8e6c9;
+  }
+
+  /* ── CROP HEADER ── */
+  .th-crop-group {
+    background: #f1f8e9;
+    color: #33691e;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-left: 3px solid #8bc34a;
+    white-space: nowrap;
+  }
+  .th-crop {
+    background: white;
+    color: #37474f;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 5px 10px 5px 14px;
+    border-right: 2px solid #e8f5e9;
+    white-space: nowrap;
+    min-width: 70px;
+  }
+  .crop-emoji { margin-right: 4px; }
+
+  /* ── CELL ── */
+  td {
+    border: 1px solid #e8f5e9;
+    width: 26px;
+    min-width: 24px;
+    height: 24px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    position: relative;
+    transition: opacity 0.15s;
+  }
+  td:hover { filter: brightness(0.9); cursor: default; }
+
+  .cell-fieldprep { background: var(--fieldprep); }
+  .cell-seed      { background: var(--seed); }
+  .cell-transplant{ background: var(--transplant); }
+  .cell-grow      { background: var(--grow); }
+  .cell-fertilize { background: var(--fertilize); }
+  .cell-spray     { background: var(--spray); }
+  .cell-harvest   { background: var(--harvest); }
+  .cell-multi     { background: repeating-linear-gradient(45deg, var(--harvest) 0px, var(--harvest) 6px, var(--seed) 6px, var(--seed) 12px); }
+  .cell-empty     { background: #fafafa; }
+
+  /* 그룹 구분선 */
+  tr.group-divider td { border-top: 2px solid #c8e6c9; }
+
+  /* 월 구분 */
+  .col-month-start { border-left: 2px solid #a5d6a7 !important; }
+  .col-month-start-dark { border-left: 3px solid #66bb6a !important; }
+
+  /* ── TOOLTIP ── */
+  td[data-tip]:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.82);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  /* ── SUMMARY CARDS ── */
+  .summary-section {
+    padding: 24px 24px 32px;
+  }
+  .summary-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--header);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .season-card {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border-top: 4px solid;
+  }
+  .season-card.spring { border-top-color: #4caf50; }
+  .season-card.summer { border-top-color: #f57c00; }
+  .season-card.autumn { border-top-color: #e64a19; }
+  .season-card.winter { border-top-color: #1976d2; }
+  .season-card-title { font-size: 0.9rem; font-weight: 800; margin-bottom: 8px; }
+  .season-card.spring .season-card-title { color: #2e7d32; }
+  .season-card.summer .season-card-title { color: #e65100; }
+  .season-card.autumn .season-card-title { color: #bf360c; }
+  .season-card.winter .season-card-title { color: #1565c0; }
+  .season-card ul { list-style: none; padding: 0; }
+  .season-card li { font-size: 0.78rem; padding: 2px 0; color: #555; display: flex; gap: 6px; }
+  .season-card li::before { content: '▸'; color: #8bc34a; flex-shrink: 0; }
+
+  /* ── TIP BOX ── */
+  .tip-section {
+    padding: 0 24px 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .tip-box {
+    background: white;
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border-left: 4px solid;
+  }
+  .tip-box h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 8px; }
+  .tip-box p, .tip-box li { font-size: 0.78rem; color: #555; line-height: 1.6; }
+  .tip-box ul { padding-left: 16px; }
+  .tip-box.green { border-left-color: #4caf50; }
+  .tip-box.orange { border-left-color: #f57c00; }
+  .tip-box.purple { border-left-color: #9c27b0; }
+  .tip-box.blue { border-left-color: #1976d2; }
+  .tip-box.red { border-left-color: #f44336; }
+  .tip-box.brown { border-left-color: #795548; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    background: #263238;
+    color: #b0bec5;
+    text-align: center;
+    padding: 18px;
+    font-size: 0.75rem;
+  }
+  .page-footer strong { color: #80cbc4; }
+
+  /* ── HIDDEN ROW ── */
+  tr.hidden-row { display: none; }
+
+  @media (max-width: 600px) {
+    .page-header { padding: 16px; }
+    .header-title { font-size: 1.4rem; }
+    .legend-wrap, .controls { padding: 10px 12px; }
+    .table-container { padding: 12px 8px; }
+    .summary-section, .tip-section { padding: 16px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════ HEADER -->
+<header class="page-header">
+  <div class="header-top">
+    <span class="header-icon">🌿</span>
+    <div>
+      <div class="header-title">한국 텃밭 재배 캘린더</div>
+      <div class="header-subtitle">Korea Home Garden Growing Calendar · 중부지방 기준 · 농촌진흥청 자료 기반</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <span class="meta-badge">📍 중부지방 기준</span>
+    <span class="meta-badge">🌱 28가지 작물</span>
+    <span class="meta-badge">📅 1월~12월 전체</span>
+    <span class="meta-badge">✅ 파종/정식/추비/방제/수확</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════ LEGEND -->
+<div class="legend-wrap">
+  <span class="legend-label">범례:</span>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--fieldprep)"></div>밭만들기</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--seed)"></div>파종/육묘</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--transplant)"></div>정식(이식)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--grow)"></div>재배기간</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--fertilize)"></div>추비(웃거름)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--spray)"></div>병해충 방제</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--harvest)"></div>수확</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ CONTROLS -->
+<div class="controls">
+  <span class="filter-label">분류별 보기:</span>
+  <button class="filter-btn active" onclick="filterGroup('all')">전체 보기</button>
+  <button class="filter-btn" onclick="filterGroup('leaf')">🥬 잎채소류</button>
+  <button class="filter-btn" onclick="filterGroup('fruit')">🍅 과채류</button>
+  <button class="filter-btn" onclick="filterGroup('root')">🥕 뿌리·구근류</button>
+  <button class="filter-btn" onclick="filterGroup('grain')">🌽 두류·잡곡</button>
+  <button class="filter-btn" onclick="filterGroup('herb')">🌿 기타</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TABLE -->
+<div class="table-container">
+<table id="calendarTable">
+<thead>
+<tr>
+  <!-- 작물명 열 -->
+  <th rowspan="2" style="background:#1b5e20;color:white;padding:6px 10px;font-size:0.82rem;min-width:80px;white-space:nowrap;text-align:left;">작물명</th>
+  <!-- 월 헤더 (각 월 = 3칸: 상/중/하) -->
+  <th colspan="3" class="th-month th-season-winter">1월<span class="season-tag">❄️ 겨울</span></th>
+  <th colspan="3" class="th-month th-season-winter">2월<span class="season-tag">❄️ 겨울</span></th>
+  <th colspan="3" class="th-month th-season-spring">3월<span class="season-tag">🌸 봄</span></th>
+  <th colspan="3" class="th-month th-season-spring">4월<span class="season-tag">🌸 봄</span></th>
+  <th colspan="3" class="th-month th-season-spring">5월<span class="season-tag">🌸 봄</span></th>
+  <th colspan="3" class="th-month th-season-summer">6월<span class="season-tag">☀️ 여름</span></th>
+  <th colspan="3" class="th-month th-season-summer">7월<span class="season-tag">☀️ 여름</span></th>
+  <th colspan="3" class="th-month th-season-summer">8월<span class="season-tag">☀️ 여름</span></th>
+  <th colspan="3" class="th-month th-season-autumn">9월<span class="season-tag">🍂 가을</span></th>
+  <th colspan="3" class="th-month th-season-autumn">10월<span class="season-tag">🍂 가을</span></th>
+  <th colspan="3" class="th-month th-season-autumn">11월<span class="season-tag">🍂 가을</span></th>
+  <th colspan="3" class="th-month th-season-winter">12월<span class="season-tag">❄️ 겨울</span></th>
+</tr>
+<tr>
+  <!-- 상중하 헤더 x12개월 -->
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+  <th class="th-decade col-month-start">상</th><th class="th-decade">중</th><th class="th-decade">하</th>
+</tr>
+</thead>
+<tbody id="calendarBody">
+
+<!-- ─────────── 잎채소류 ─────────── -->
+<tr class="group-divider"><td class="th-crop-group" colspan="37" data-group="leaf">🥬 잎채소류</td></tr>
+
+<!-- 상추: 봄파종 3중~5중, 수확 4~6월 / 가을파종 9상~10상, 수확 10~11월 -->
+<tr data-group="leaf">
+  <td class="th-crop"><span class="crop-emoji">🥬</span>상추</td>
+  <td class="cell-empty" colspan="1"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 1월 -->
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-fieldprep" data-tip="밭만들기(퇴비)"></td><!-- 2월 -->
+  <td class="cell-seed" data-tip="씨앗파종(봄)"></td><td class="cell-seed" data-tip="씨앗파종"></td><td class="cell-transplant" data-tip="모종 정식"></td><!-- 3월 -->
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="수확 시작"></td><!-- 4월 -->
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><!-- 5월 -->
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확(더위 주의)"></td><td class="cell-empty"></td><!-- 6월 -->
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 7월 -->
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-fieldprep" data-tip="밭만들기(가을)"></td><!-- 8월 -->
+  <td class="cell-seed" data-tip="씨앗파종(가을)"></td><td class="cell-seed" data-tip="씨앗파종"></td><td class="cell-transplant" data-tip="모종 정식"></td><!-- 9월 -->
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><!-- 10월 -->
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 11월 -->
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 12월 -->
+</tr>
+
+<!-- 시금치 -->
+<tr data-group="leaf">
+  <td class="th-crop"><span class="crop-emoji">🌿</span>시금치</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 1월 -->
+  <td class="cell-empty"></td><td class="cell-fieldprep" data-tip="밭만들기"></td><td class="cell-seed" data-tip="조기 파종(터널재배)"></td><!-- 2월 -->
+  <td class="cell-seed" data-tip="봄파종"></td><td class="cell-seed" data-tip="봄파종"></td><td class="cell-grow" data-tip="재배"></td><!-- 3월 -->
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><!-- 4월 -->
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 5월 -->
+  <td class="cell-seed" data-tip="여름파종(2차)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><!-- 6월 -->
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-empty"></td><!-- 7월 -->
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 8월 -->
+  <td class="cell-fieldprep" data-tip="밭만들기(가을)"></td><td class="cell-seed" data-tip="가을파종(3차)"></td><td class="cell-grow" data-tip="재배"></td><!-- 9월 -->
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><!-- 10월 -->
+  <td class="cell-harvest" data-tip="월동시금치 파종→월동"></td><td class="cell-seed" data-tip="월동시금치 파종"></td><td class="cell-grow" data-tip="월동 중"></td><!-- 11월 -->
+  <td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td><!-- 12월 -->
+</tr>
+
+<!-- 열무 -->
+<tr data-group="leaf">
+  <td class="th-crop"><span class="crop-emoji">🌱</span>열무</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 1월 -->
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 2월 -->
+  <td class="cell-fieldprep" data-tip="밭만들기"></td><td class="cell-seed" data-tip="봄파종"></td><td class="cell-seed" data-tip="봄파종"></td><!-- 3월 -->
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="수확(3~4주)"></td><!-- 4월 -->
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-seed" data-tip="2차 파종"></td><td class="cell-grow" data-tip="재배"></td><!-- 5월 -->
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-seed" data-tip="3차 파종"></td><td class="cell-grow" data-tip="재배"></td><!-- 6월 -->
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 7월 -->
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 8월 -->
+  <td class="cell-fieldprep" data-tip="밭만들기(가을)"></td><td class="cell-seed" data-tip="가을파종"></td><td class="cell-grow" data-tip="재배"></td><!-- 9월 -->
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><!-- 10월 -->
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 11월 -->
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 12월 -->
+</tr>
+
+<!-- 쑥갓 -->
+<tr data-group="leaf">
+  <td class="th-crop"><span class="crop-emoji">🌿</span>쑥갓</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="밭만들기"></td><td class="cell-seed" data-tip="봄파종(3중~4상)"></td><td class="cell-seed" data-tip="봄파종"></td>
+  <td class="cell-seed" data-tip="파종 계속"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-fieldprep" data-tip="가을밭 준비"></td>
+  <td class="cell-seed" data-tip="가을파종"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 부추 -->
+<tr data-group="herb">
+  <td class="th-crop"><span class="crop-emoji">🌱</span>부추</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="밭만들기(1차)"></td><td class="cell-seed" data-tip="씨앗 파종(1차)"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-fertilize" data-tip="추비"></td>
+  <td class="cell-harvest" data-tip="수확(1차)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-fertilize" data-tip="추비(2차)"></td><td class="cell-harvest" data-tip="수확(2차)"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-transplant" data-tip="모종 이식(2차)"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="가을수확"></td><td class="cell-harvest" data-tip="가을수확"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-grow" data-tip="월동 준비"></td>
+  <td class="cell-grow" data-tip="월동"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- ─────────── 과채류 ─────────── -->
+<tr class="group-divider"><td class="th-crop-group" colspan="37" data-group="fruit">🍅 과채류</td></tr>
+
+<!-- 고추 -->
+<tr data-group="fruit">
+  <td class="th-crop"><span class="crop-emoji">🌶️</span>고추</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 1월 -->
+  <td class="cell-seed" data-tip="실내 육묘 파종(2상~)"></td><td class="cell-seed" data-tip="실내 육묘"></td><td class="cell-grow" data-tip="육묘 중"></td><!-- 2월 -->
+  <td class="cell-grow" data-tip="육묘 중"></td><td class="cell-grow" data-tip="육묘 중"></td><td class="cell-fieldprep" data-tip="밭만들기/퇴비"></td><!-- 3월 -->
+  <td class="cell-fieldprep" data-tip="밭 최종 준비"></td><td class="cell-transplant" data-tip="노지 정식(4중~)"></td><td class="cell-transplant" data-tip="노지 정식"></td><!-- 4월 -->
+  <td class="cell-transplant" data-tip="정식 마무리"></td><td class="cell-grow" data-tip="재배/활착"></td><td class="cell-fertilize" data-tip="활착 후 추비"></td><!-- 5월 -->
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-spray" data-tip="진딧물·탄저병 방제"></td><td class="cell-fertilize" data-tip="추비(2차)"></td><!-- 6월 -->
+  <td class="cell-harvest" data-tip="풋고추 수확 시작"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-fertilize" data-tip="추비(3차)"></td><!-- 7월 -->
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-spray" data-tip="탄저병·역병 방제"></td><td class="cell-harvest" data-tip="수확"></td><!-- 8월 -->
+  <td class="cell-harvest" data-tip="홍고추 수확"></td><td class="cell-harvest" data-tip="홍고추 수확"></td><td class="cell-harvest" data-tip="수확"></td><!-- 9월 -->
+  <td class="cell-harvest" data-tip="수확 마무리"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 10월 -->
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 11월 -->
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td><!-- 12월 -->
+</tr>
+
+<!-- 토마토 -->
+<tr data-group="fruit">
+  <td class="th-crop"><span class="crop-emoji">🍅</span>토마토</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-seed" data-tip="실내 육묘 파종(2중~)"></td><td class="cell-seed" data-tip="육묘 중"></td>
+  <td class="cell-grow" data-tip="육묘 중"></td><td class="cell-fieldprep" data-tip="밭만들기/퇴비"></td><td class="cell-grow" data-tip="육묘 계속"></td>
+  <td class="cell-transplant" data-tip="노지 정식(4상~중)"></td><td class="cell-transplant" data-tip="정식"></td><td class="cell-grow" data-tip="재배/유인"></td>
+  <td class="cell-grow" data-tip="재배/곁순제거"></td><td class="cell-fertilize" data-tip="착과 후 추비"></td><td class="cell-spray" data-tip="역병 방제"></td>
+  <td class="cell-harvest" data-tip="수확 시작"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-spray" data-tip="역병·잿빛곰팡이 방제"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 오이 -->
+<tr data-group="fruit">
+  <td class="th-crop"><span class="crop-emoji">🥒</span>오이</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-seed" data-tip="육묘 파종(3상)"></td><td class="cell-seed" data-tip="육묘 중"></td><td class="cell-grow" data-tip="육묘 중"></td>
+  <td class="cell-transplant" data-tip="정식(4상~중)"></td><td class="cell-transplant" data-tip="정식"></td><td class="cell-grow" data-tip="재배/유인"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-fertilize" data-tip="추비(착과 후)"></td><td class="cell-spray" data-tip="흰가루병 방제"></td>
+  <td class="cell-harvest" data-tip="수확 시작"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(성수기)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-spray" data-tip="노균병 방제"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 가지 -->
+<tr data-group="fruit">
+  <td class="th-crop"><span class="crop-emoji">🍆</span>가지</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-seed" data-tip="실내 육묘(2하~)"></td>
+  <td class="cell-grow" data-tip="육묘 중"></td><td class="cell-grow" data-tip="육묘 중"></td><td class="cell-fieldprep" data-tip="밭만들기"></td>
+  <td class="cell-transplant" data-tip="정식(4상~중)"></td><td class="cell-transplant" data-tip="정식"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-fertilize" data-tip="추비"></td><td class="cell-spray" data-tip="진딧물 방제"></td>
+  <td class="cell-harvest" data-tip="수확 시작(6상)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(성수기)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-fertilize" data-tip="추비(2차)"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확(마무리)"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 호박 -->
+<tr data-group="fruit">
+  <td class="th-crop"><span class="crop-emoji">🎃</span>호박</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-seed" data-tip="육묘 파종(3상~중)"></td><td class="cell-seed" data-tip="육묘 중"></td><td class="cell-fieldprep" data-tip="밭만들기"></td>
+  <td class="cell-transplant" data-tip="정식(4상~중)"></td><td class="cell-transplant" data-tip="정식"></td><td class="cell-grow" data-tip="재배/유인"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="풋호박 수확 시작"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확(성수기)"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 수박 -->
+<tr data-group="fruit">
+  <td class="th-crop"><span class="crop-emoji">🍉</span>수박</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-seed" data-tip="실내 육묘(3중~)"></td><td class="cell-seed" data-tip="육묘 중"></td><td class="cell-grow" data-tip="육묘 중"></td>
+  <td class="cell-grow" data-tip="육묘 중"></td><td class="cell-transplant" data-tip="정식(4중~하)"></td><td class="cell-transplant" data-tip="정식"></td>
+  <td class="cell-grow" data-tip="재배/유인"></td><td class="cell-grow" data-tip="재배/인공수분"></td><td class="cell-fertilize" data-tip="착과 후 추비"></td>
+  <td class="cell-grow" data-tip="재배(착과)"></td><td class="cell-grow" data-tip="비대기"></td><td class="cell-harvest" data-tip="수확 시작"></td>
+  <td class="cell-harvest" data-tip="수확(성수기)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- ─────────── 뿌리·구근류 ─────────── -->
+<tr class="group-divider"><td class="th-crop-group" colspan="37" data-group="root">🥕 뿌리·구근·결구류</td></tr>
+
+<!-- 감자 -->
+<tr data-group="root">
+  <td class="th-crop"><span class="crop-emoji">🥔</span>감자</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="밭만들기(봄)"></td><td class="cell-fieldprep" data-tip="퇴비·이랑만들기"></td><td class="cell-transplant" data-tip="봄 씨감자 심기(2하~3상)"></td>
+  <td class="cell-transplant" data-tip="심기(3상)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배/북주기"></td>
+  <td class="cell-grow" data-tip="재배/북주기"></td><td class="cell-fertilize" data-tip="추비(싹 나온 후)"></td><td class="cell-spray" data-tip="역병 방제"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="봄 수확(5중~)"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-fieldprep" data-tip="가을 밭만들기"></td>
+  <td class="cell-transplant" data-tip="가을 씨감자 심기(9상~)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="가을 수확(10하~11상)"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 고구마 -->
+<tr data-group="root">
+  <td class="th-crop"><span class="crop-emoji">🍠</span>고구마</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-fieldprep" data-tip="밭만들기/이랑만들기"></td>
+  <td class="cell-fieldprep" data-tip="두둑만들기"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-transplant" data-tip="줄기 삽식(5상~중)"></td><td class="cell-transplant" data-tip="삽식"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배/덩굴뒤집기"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="비대기"></td><td class="cell-grow" data-tip="비대기"></td><td class="cell-grow" data-tip="비대기"></td>
+  <td class="cell-harvest" data-tip="수확 시작(9상~)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 당근 -->
+<tr data-group="root">
+  <td class="th-crop"><span class="crop-emoji">🥕</span>당근</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-fieldprep" data-tip="밭만들기(봄)"></td><td class="cell-seed" data-tip="봄 직파(3하~4상)"></td>
+  <td class="cell-seed" data-tip="파종"></td><td class="cell-grow" data-tip="재배/솎음"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="봄 수확(6중~)"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-fieldprep" data-tip="밭만들기(가을)"></td>
+  <td class="cell-seed" data-tip="가을 직파(9상~중)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-harvest" data-tip="가을 수확(11상~)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 무 -->
+<tr data-group="root">
+  <td class="th-crop"><span class="crop-emoji">🥛</span>무</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-fieldprep" data-tip="밭만들기(봄)"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-seed" data-tip="봄 직파(5상~중)"></td><td class="cell-grow" data-tip="재배/솎음"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="봄무 수확(6중~)"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-fieldprep" data-tip="밭만들기(가을)"></td>
+  <td class="cell-seed" data-tip="가을 직파(9상~중)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-fertilize" data-tip="추비"></td>
+  <td class="cell-harvest" data-tip="가을무 수확(10하~)"></td><td class="cell-harvest" data-tip="수확(김장무)"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 배추 -->
+<tr data-group="root">
+  <td class="th-crop"><span class="crop-emoji">🥬</span>배추</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="봄 밭만들기"></td><td class="cell-seed" data-tip="봄배추 육묘(3중~)"></td><td class="cell-transplant" data-tip="봄배추 정식(3하~4상)"></td>
+  <td class="cell-transplant" data-tip="정식(4상)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-fertilize" data-tip="추비"></td><td class="cell-spray" data-tip="진딧물·배추흰나비 방제"></td><td class="cell-harvest" data-tip="봄배추 수확(5하~)"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="가을 밭만들기"></td><td class="cell-seed" data-tip="가을배추 육묘(7하~8상)"></td><td class="cell-transplant" data-tip="정식(8상~중)"></td>
+  <td class="cell-transplant" data-tip="정식"></td><td class="cell-grow" data-tip="재배/활착"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-fertilize" data-tip="추비(2~3회)"></td><td class="cell-spray" data-tip="무름병·진딧물 방제"></td><td class="cell-fertilize" data-tip="결구 전 마지막 추비"></td>
+  <td class="cell-harvest" data-tip="가을배추(김장) 수확(10하~)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 양파 -->
+<tr data-group="root">
+  <td class="th-crop"><span class="crop-emoji">🧅</span>양파</td>
+  <td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td>
+  <td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td>
+  <td class="cell-fertilize" data-tip="웃거름(1차) 3상"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-fertilize" data-tip="웃거름(2차) 4상"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-spray" data-tip="노균병 방제"></td>
+  <td class="cell-grow" data-tip="구비대기"></td><td class="cell-grow" data-tip="구비대기"></td><td class="cell-grow" data-tip="비대기"></td>
+  <td class="cell-harvest" data-tip="수확 시작(6상~)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확(마무리)"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="가을밭 준비"></td><td class="cell-seed" data-tip="씨앗 파종(9중~육묘)"></td><td class="cell-grow" data-tip="육묘 중"></td>
+  <td class="cell-grow" data-tip="육묘 중"></td><td class="cell-transplant" data-tip="모종 정식(10중~하)"></td><td class="cell-transplant" data-tip="정식"></td>
+  <td class="cell-grow" data-tip="활착/월동 준비"></td><td class="cell-grow" data-tip="월동 시작"></td><td class="cell-grow" data-tip="월동 중"></td>
+  <td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td>
+</tr>
+
+<!-- 마늘 -->
+<tr data-group="root">
+  <td class="th-crop"><span class="crop-emoji">🧄</span>마늘</td>
+  <td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td>
+  <td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td>
+  <td class="cell-fertilize" data-tip="웃거름(1차)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-fertilize" data-tip="웃거름(2차)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-spray" data-tip="잎마름병 방제"></td>
+  <td class="cell-grow" data-tip="재배(구비대기)"></td><td class="cell-grow" data-tip="구비대기"></td><td class="cell-grow" data-tip="구비대기"></td>
+  <td class="cell-harvest" data-tip="수확(6상~중) - 잎 2/3 마를 때"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확(마무리)"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="가을밭 준비"></td><td class="cell-transplant" data-tip="마늘쪽 심기(10중~하)"></td><td class="cell-transplant" data-tip="심기"></td>
+  <td class="cell-grow" data-tip="활착/발근"></td><td class="cell-grow" data-tip="월동 시작"></td><td class="cell-grow" data-tip="월동 중"></td>
+  <td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td>
+</tr>
+
+<!-- 대파 -->
+<tr data-group="root">
+  <td class="th-crop"><span class="crop-emoji">🧅</span>대파</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-seed" data-tip="씨앗 파종(2상~중)"></td><td class="cell-seed" data-tip="파종"></td><td class="cell-grow" data-tip="육묘 중"></td>
+  <td class="cell-grow" data-tip="육묘 중"></td><td class="cell-grow" data-tip="육묘 중"></td><td class="cell-transplant" data-tip="봄 정식(3하~4상)"></td>
+  <td class="cell-transplant" data-tip="정식"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-fertilize" data-tip="추비"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배/북주기"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-fertilize" data-tip="추비(2차)"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-transplant" data-tip="가을 정식(7상~중)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-fertilize" data-tip="추비"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="수확 시작"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확(마무리)"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-grow" data-tip="월동 중(재배계속)"></td><td class="cell-grow" data-tip="월동 중"></td><td class="cell-grow" data-tip="월동 중"></td>
+</tr>
+
+<!-- 쪽파 -->
+<tr data-group="root">
+  <td class="th-crop"><span class="crop-emoji">🧅</span>쪽파</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-seed" data-tip="봄 파종(3중~4상)"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="봄 수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-fieldprep" data-tip="가을 밭만들기"></td>
+  <td class="cell-seed" data-tip="가을 파종(9상~중)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-harvest" data-tip="가을 수확(10중~)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- ─────────── 두류·잡곡 ─────────── -->
+<tr class="group-divider"><td class="th-crop-group" colspan="37" data-group="grain">🌽 두류·잡곡류</td></tr>
+
+<!-- 옥수수 -->
+<tr data-group="grain">
+  <td class="th-crop"><span class="crop-emoji">🌽</span>옥수수</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="밭만들기"></td><td class="cell-seed" data-tip="씨앗 직파(4중~하)"></td><td class="cell-seed" data-tip="파종"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-fertilize" data-tip="추비(1차)"></td>
+  <td class="cell-grow" data-tip="재배(수염 나올 때)"></td><td class="cell-fertilize" data-tip="추비(2차)"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-harvest" data-tip="수확(7상~중) 수염 갈색 될 때"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 콩(메주콩) -->
+<tr data-group="grain">
+  <td class="th-crop"><span class="crop-emoji">🫘</span>콩(메주콩)</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="밭만들기"></td><td class="cell-seed" data-tip="파종(6중~하지)"></td><td class="cell-seed" data-tip="파종"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배(꽃 필 때)"></td><td class="cell-grow" data-tip="재배(꼬투리 비대)"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-harvest" data-tip="풋콩 수확(9하~)"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="건조콩 수확(10하)"></td>
+  <td class="cell-harvest" data-tip="수확(마무리)"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 들깨 -->
+<tr data-group="grain">
+  <td class="th-crop"><span class="crop-emoji">🌿</span>들깨</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="밭만들기"></td><td class="cell-seed" data-tip="육묘 파종(5중~)"></td><td class="cell-grow" data-tip="육묘 중"></td>
+  <td class="cell-transplant" data-tip="모종 정식(6상~중)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배/순지르기"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배(꽃 필 때)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="잎 수확 계속"></td><td class="cell-grow" data-tip="종실 비대"></td><td class="cell-harvest" data-tip="들깨잎 수확 마무리"></td>
+  <td class="cell-harvest" data-tip="들깨 수확(10상~중)"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 참깨 -->
+<tr data-group="grain">
+  <td class="th-crop"><span class="crop-emoji">🌾</span>참깨</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="밭만들기"></td><td class="cell-seed" data-tip="파종(5중~소만)"></td><td class="cell-seed" data-tip="파종"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배/솎음"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배(꽃 필 때)"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-fertilize" data-tip="추비"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="종실 비대기"></td><td class="cell-grow" data-tip="비대기"></td>
+  <td class="cell-harvest" data-tip="수확(9상~중) 하꼬투리 갈색"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확(마무리)"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- ─────────── 기타 ─────────── -->
+<tr class="group-divider"><td class="th-crop-group" colspan="37" data-group="herb">🌿 기타 (허브·특용)</td></tr>
+
+<!-- 생강 -->
+<tr data-group="herb">
+  <td class="th-crop"><span class="crop-emoji">🫚</span>생강</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="밭만들기/퇴비"></td><td class="cell-transplant" data-tip="종생강 심기(4중~5상)"></td><td class="cell-transplant" data-tip="심기"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배/제초"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="비대기"></td><td class="cell-grow" data-tip="비대기"></td><td class="cell-grow" data-tip="비대기"></td>
+  <td class="cell-harvest" data-tip="수확(10상~하) 서리 전에"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확(마무리)"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+<!-- 토란 -->
+<tr data-group="herb">
+  <td class="th-crop"><span class="crop-emoji">🌿</span>토란</td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-fieldprep" data-tip="밭만들기"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-transplant" data-tip="씨토란 심기(5상~중) 곡우~입하"></td><td class="cell-transplant" data-tip="심기"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-fertilize" data-tip="추비"></td><td class="cell-grow" data-tip="재배"></td>
+  <td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배"></td><td class="cell-grow" data-tip="재배/비대"></td>
+  <td class="cell-grow" data-tip="비대기"></td><td class="cell-grow" data-tip="비대기"></td><td class="cell-harvest" data-tip="수확(9하~10상)"></td>
+  <td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확"></td><td class="cell-harvest" data-tip="수확(마무리)"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+  <td class="cell-empty"></td><td class="cell-empty"></td><td class="cell-empty"></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ SEASON CARDS -->
+<div class="summary-section">
+  <div class="summary-title">📅 계절별 핵심 작업 가이드</div>
+  <div class="cards-grid">
+    <div class="season-card spring">
+      <div class="season-card-title">🌸 봄 (3~5월) 주요 작업</div>
+      <ul>
+        <li>3월 초: 시금치·상추·쑥갓 파종</li>
+        <li>3월 중: 감자 씨감자 심기</li>
+        <li>3~4월: 고추·토마토 실내 육묘</li>
+        <li>4월 중: 오이·가지·호박 정식</li>
+        <li>4월 하: 수박·참외 모종 정식</li>
+        <li>5월 초: 고추·토마토 노지 정식</li>
+        <li>5월 중: 고구마 줄기 삽식</li>
+        <li>5월 중: 참깨·무(1차) 파종</li>
+      </ul>
+    </div>
+    <div class="season-card summer">
+      <div class="season-card-title">☀️ 여름 (6~8월) 주요 작업</div>
+      <ul>
+        <li>6월: 마늘·양파·봄배추 수확</li>
+        <li>6월 중: 들깨 정식, 콩 파종</li>
+        <li>7월 초: 대파 모종 정식</li>
+        <li>7월 중: 가을배추·무 육묘 시작</li>
+        <li>7~8월: 병해충(탄저·역병) 집중 방제</li>
+        <li>7~8월: 고추·토마토·오이 수확 성수기</li>
+        <li>8월 초: 가을배추 정식</li>
+        <li>8월 하: 무·양파 씨앗 파종</li>
+      </ul>
+    </div>
+    <div class="season-card autumn">
+      <div class="season-card-title">🍂 가을 (9~11월) 주요 작업</div>
+      <ul>
+        <li>9월 초: 쪽파 파종, 시금치(3차) 파종</li>
+        <li>9월 초: 가을상추 파종</li>
+        <li>9월: 들깨·참깨 수확</li>
+        <li>9월 하: 고구마 수확, 콩 수확</li>
+        <li>10월 중: 마늘쪽 심기</li>
+        <li>10월 중: 양파 모종 정식</li>
+        <li>10월 하~11월: 김장배추·무·마늘 수확</li>
+        <li>11월: 월동시금치 파종</li>
+      </ul>
+    </div>
+    <div class="season-card winter">
+      <div class="season-card-title">❄️ 겨울 (12~2월) 주요 작업</div>
+      <ul>
+        <li>12~2월: 마늘·양파 월동 관리</li>
+        <li>1~2월: 텃밭 퇴비·석회 투입</li>
+        <li>2월 상: 고추 실내 육묘 파종</li>
+        <li>2월 중: 토마토 실내 육묘 파종</li>
+        <li>2월 하: 감자 씨감자 심기 준비</li>
+        <li>2월: 시설재배 시금치·상추 조기 파종</li>
+        <li>월동시금치 수확(봄에 이어)</li>
+        <li>내년 농사 계획 수립</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TIP BOXES -->
+<div class="tip-section">
+  <div class="tip-box green">
+    <h4>🌱 파종/정식 핵심 팁</h4>
+    <ul>
+      <li>고추·토마토·가지는 최소 60일 전 실내 육묘 필수</li>
+      <li>모종 정식 후 2~3일간 차광망으로 햇빛 차단</li>
+      <li>씨앗 직파 시 발아 전까지 건조하지 않게 관리</li>
+      <li>감자·고구마는 이랑(두둑) 높이를 20~30cm로</li>
+      <li>마늘·양파는 서리가 오기 전 뿌리를 내려야 함</li>
+    </ul>
+  </div>
+  <div class="tip-box orange">
+    <h4>🌾 추비(웃거름) 핵심 팁</h4>
+    <ul>
+      <li>정식 후 2~3주 뒤 첫 추비 시작 (활착 확인 후)</li>
+      <li>과채류는 첫 수확 후 2회 차 추비 필수</li>
+      <li>마늘·양파: 3월·4월 상순 2회 나눠 시비</li>
+      <li>배추: 정식 후 10일, 20일, 30일 총 3회 시비</li>
+      <li>추비는 비 오기 전날 또는 물 준 직후에 시비</li>
+    </ul>
+  </div>
+  <div class="tip-box purple">
+    <h4>🔬 병해충 방제 핵심 팁</h4>
+    <ul>
+      <li>고추 탄저병: 6~9월 비 온 후 즉시 방제</li>
+      <li>배추 진딧물: 초기 발견 시 즉시 친환경약제 살포</li>
+      <li>토마토 역병: 7~8월 장마철 집중 방제</li>
+      <li>오이 흰가루병: 통풍 관리, 석회유황합제 활용</li>
+      <li>마늘·양파 노균병: 4월 잎에 회색 곰팡이 확인</li>
+    </ul>
+  </div>
+  <div class="tip-box blue">
+    <h4>💧 물관리 핵심 팁</h4>
+    <ul>
+      <li>여름 고온기: 아침·저녁 2회 충분히 관수</li>
+      <li>수박·참외: 착과 후 과다 관수 금지 (당도 저하)</li>
+      <li>마늘·양파: 수확 2~3주 전부터 관수 중단</li>
+      <li>감자: 괴경 비대기 건조하면 열개 발생</li>
+      <li>점적관수 시스템 설치 시 노동력 60% 절감</li>
+    </ul>
+  </div>
+  <div class="tip-box red">
+    <h4>🗓️ 수확 핵심 팁</h4>
+    <ul>
+      <li>상추·시금치: 잎이 15~20cm일 때 아래 잎부터 수확</li>
+      <li>고추: 꽃 핀 후 40~45일 풋고추, 60~70일 홍고추</li>
+      <li>감자: 지상부 잎이 누렇게 변하면 수확 신호</li>
+      <li>마늘: 잎의 2/3가 마르면 수확 적기</li>
+      <li>수박: 꽃가루 묻힌 후 35~40일 (손으로 두드려 확인)</li>
+    </ul>
+  </div>
+  <div class="tip-box brown">
+    <h4>🌍 밭만들기 핵심 팁</h4>
+    <ul>
+      <li>파종 2~3주 전 퇴비 충분히 넣고 깊이갈이</li>
+      <li>산성 토양은 석회 투입 (pH 6.0~6.5 목표)</li>
+      <li>이랑 방향: 남북 방향으로 만들어 햇빛 고르게</li>
+      <li>두둑 높이: 배수 불량 토양은 높게 (30cm+)</li>
+      <li>비닐 멀칭으로 잡초 억제 + 지온 상승 효과</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ FOOTER -->
+<div class="page-footer">
+  <strong>🌿 한국 텃밭 재배 캘린더</strong> | 중부지방(서울·경기·충청) 기준 | 
+  자료 출처: 농촌진흥청 국립원예특작과학원 · 농사로(nongsaro.go.kr) · 24절기 재배력 기반 |
+  남부지방은 약 2주 빠르게, 북부지방은 약 2주 늦게 조정하세요.
+</div>
+
+<script>
+function filterGroup(group) {
+  // 버튼 활성화
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  const rows = document.querySelectorAll('#calendarBody tr[data-group]');
+  const groupHeaders = document.querySelectorAll('#calendarBody td.th-crop-group');
+
+  rows.forEach(row => {
+    if (group === 'all' || row.dataset.group === group) {
+      row.classList.remove('hidden-row');
+    } else {
+      row.classList.add('hidden-row');
+    }
+  });
+
+  // 그룹 헤더 표시/숨김
+  groupHeaders.forEach(td => {
+    const tr = td.parentElement;
+    const targetGroup = td.dataset.group;
+    if (group === 'all' || targetGroup === group) {
+      tr.classList.remove('hidden-row');
+    } else {
+      tr.classList.add('hidden-row');
+    }
+  });
+}
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
