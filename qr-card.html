@@ -5,197 +5,146 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>백두농기 안내카드 A5</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box}
-  @page{size:148mm 210mm;margin:0}
-  body{
-    font-family:'Noto Sans KR',sans-serif;
-    background:#e8e8e8;
-    display:flex;justify-content:center;align-items:center;
-    min-height:100vh;
-    -webkit-print-color-adjust:exact;print-color-adjust:exact;
-  }
-  .print-btn{
-    position:fixed;bottom:20px;right:20px;z-index:999;
-    background:#1B5E20;color:#fff;border:none;border-radius:50px;
-    padding:12px 24px;font-size:14px;font-weight:700;
-    font-family:'Noto Sans KR',sans-serif;cursor:pointer;
-    display:flex;align-items:center;gap:6px;
-  }
-  .card{
-    width:148mm;height:210mm;background:#fff;
-    box-shadow:0 4px 20px rgba(0,0,0,0.1);
-    overflow:hidden;display:flex;flex-direction:column;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:148mm 210mm;margin:0}
+html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:#d0d0d0;display:flex;justify-content:center;align-items:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pb{position:fixed;bottom:16px;right:16px;z-index:99;background:#1B5E20;color:#fff;border:none;border-radius:40px;padding:10px 22px;font:700 13px 'Noto Sans KR',sans-serif;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.3)}
 
-  /* 헤더 - 가로배치로 높이 절약 */
-  .hd{
-    background:linear-gradient(135deg,#1B5E20,#2E7D32);
-    padding:3mm 5mm;display:flex;align-items:center;gap:3mm;
-  }
-  .hd img{height:10mm;background:#fff;padding:0.8mm 2mm;border-radius:4px}
-  .hd .t{color:#fff}
-  .hd .t h1{font-size:13px;font-weight:900}
-  .hd .t span{
-    display:inline-block;margin-top:0.5mm;
-    background:#FF6F00;font-size:8px;font-weight:700;
-    padding:0.5mm 2.5mm;border-radius:8px;color:#fff;
-  }
+/* ── CARD ── */
+.c{width:148mm;height:210mm;background:#fff;display:grid;grid-template-rows:auto 1fr auto auto auto;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.15);border-radius:10px}
 
-  /* QR */
-  .qs{padding:2mm 4mm 1.5mm}
-  .qs .qt{text-align:center;font-size:9px;color:#555;margin-bottom:1.5mm;padding-bottom:1mm;border-bottom:1px solid #e0e0e0}
-  .qs .qt b{color:#1B5E20}
-  .qg{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm 3mm}
-  .qi{display:flex;align-items:center;gap:2mm;padding:1.5mm 2mm;border:1px solid #e8e8e8;border-radius:6px;position:relative;overflow:hidden}
-  .qi::before{content:'';position:absolute;top:0;left:0;width:2.5px;height:100%}
-  .qi:nth-child(1)::before{background:#1B5E20}
-  .qi:nth-child(2)::before{background:#E65100}
-  .qi:nth-child(3)::before{background:#C62828}
-  .qi:nth-child(4)::before{background:#1565C0}
-  .qi img{width:14mm;height:14mm;border:1px solid #eee;border-radius:3px}
-  .qi .l{font-size:9px;font-weight:700}
-  .qi:nth-child(1) .l{color:#1B5E20}
-  .qi:nth-child(2) .l{color:#E65100}
-  .qi:nth-child(3) .l{color:#C62828}
-  .qi:nth-child(4) .l{color:#1565C0}
-  .qi .d{font-size:7px;color:#777;margin-top:0.2mm}
-  .qi .b{display:inline-block;font-size:5.5px;font-weight:700;padding:0.2mm 1.5mm;border-radius:4px;margin-top:0.2mm}
-  .qi:nth-child(1) .b{background:#E8F5E9;color:#2E7D32}
-  .qi:nth-child(2) .b{background:#FFF3E0;color:#E65100}
-  .qi:nth-child(3) .b{background:#FFEBEE;color:#C62828}
-  .qi:nth-child(4) .b{background:#E3F2FD;color:#1565C0}
+/* ── HEADER ── */
+.hd{background:linear-gradient(135deg,#14451f,#1B5E20,#2d7a3a);padding:3.5mm 5mm;display:flex;align-items:center;gap:3.5mm}
+.hd img{height:12mm;background:#fff;padding:1mm 2mm;border-radius:4px}
+.hd .tt{color:#fff}
+.hd h1{font-size:15px;font-weight:900;line-height:1.2}
+.hd .md{display:inline-block;margin-top:.8mm;background:#FF6F00;font-size:9px;font-weight:700;padding:.5mm 3mm;border-radius:8px;color:#fff}
 
-  /* 주의사항 - flex:1로 남는공간 채움 */
-  .nt{
-    margin:1.5mm 4mm;padding:2.5mm 3mm;flex:1;
-    background:linear-gradient(135deg,#FFF3E0,#FFF8E1);
-    border-radius:8px;border:1px solid #FFCC80;
-    display:flex;flex-direction:column;
-  }
-  .nt .tt{font-size:11px;font-weight:900;color:#E65100;text-align:center;margin-bottom:1.5mm;padding-bottom:1mm;border-bottom:1px solid #FFCC80}
-  .ng{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm 2.5mm;flex:1}
-  .nc{
-    background:#fff;border-radius:5px;padding:2mm 2.5mm;
-    border:1px solid #f0e0c0;position:relative;overflow:hidden;
-    display:flex;flex-direction:column;justify-content:center;
-  }
-  .nc::before{content:'';position:absolute;top:0;left:0;width:2.5px;height:100%}
-  .nc:nth-child(1)::before{background:#E65100}
-  .nc:nth-child(2)::before{background:#1565C0}
-  .nc:nth-child(3)::before{background:#C62828}
-  .nc:nth-child(4)::before{background:#2E7D32}
-  .nc .nh{display:flex;align-items:center;gap:1mm;margin-bottom:0.5mm}
-  .nc .ni{font-size:11px}
-  .nc .nl{font-size:9px;font-weight:900}
-  .nc:nth-child(1) .nl{color:#E65100}
-  .nc:nth-child(2) .nl{color:#1565C0}
-  .nc:nth-child(3) .nl{color:#C62828}
-  .nc:nth-child(4) .nl{color:#2E7D32}
-  .nc .nd{font-size:7.5px;color:#444;line-height:1.5}
-  .nc .nw{font-size:6.5px;color:#C62828;font-weight:700;margin-top:0.5mm}
+/* ── QR SECTION (biggest section) ── */
+.qs{padding:3mm 5mm;display:flex;flex-direction:column;justify-content:center}
+.qs .st{text-align:center;font-size:9.5px;color:#666;margin-bottom:2.5mm;padding-bottom:1.5mm;border-bottom:1px solid #e0e0e0}
+.qs .st b{color:#1B5E20}
+.qg{display:grid;grid-template-columns:1fr 1fr;gap:3mm 5mm}
+.qi{display:flex;align-items:center;gap:3mm;background:#f8faf8;border:1px solid #e0e0e0;border-radius:10px;padding:3mm;position:relative;overflow:hidden}
+.qi::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3.5px;border-radius:10px 0 0 10px}
+.qi:nth-child(1)::after{background:#1B5E20}
+.qi:nth-child(2)::after{background:#E65100}
+.qi:nth-child(3)::after{background:#C62828}
+.qi:nth-child(4)::after{background:#1565C0}
+.qi img{width:22mm;height:22mm;border:1.5px solid #ddd;border-radius:6px;background:#fff;padding:.5mm}
+.qi .inf .lb{font-size:11px;font-weight:900}
+.qi:nth-child(1) .lb{color:#1B5E20}
+.qi:nth-child(2) .lb{color:#E65100}
+.qi:nth-child(3) .lb{color:#C62828}
+.qi:nth-child(4) .lb{color:#1565C0}
+.qi .inf .ds{font-size:8px;color:#777;margin-top:.3mm;line-height:1.4}
+.qi .inf .bg{display:inline-block;font-size:6px;font-weight:700;padding:.2mm 2mm;border-radius:6px;margin-top:.5mm}
+.qi:nth-child(1) .bg{background:#E8F5E9;color:#2E7D32}
+.qi:nth-child(2) .bg{background:#FFF3E0;color:#E65100}
+.qi:nth-child(3) .bg{background:#FFEBEE;color:#C62828}
+.qi:nth-child(4) .bg{background:#E3F2FD;color:#1565C0}
 
-  /* 리뷰 */
-  .rv{
-    margin:1.5mm 4mm;padding:2.5mm 3mm;
-    background:linear-gradient(135deg,#E8F5E9,#F1F8E9);
-    border:1.5px dashed #66BB6A;border-radius:8px;text-align:center;
-  }
-  .rv .st{font-size:14px;letter-spacing:1px}
-  .rv .rt{font-size:11px;font-weight:900;color:#1B5E20;margin:0.5mm 0}
-  .rv .rd{font-size:8px;color:#555;line-height:1.45;margin-bottom:1mm}
-  .rv .rh{
-    display:inline-block;background:linear-gradient(135deg,#1B5E20,#43A047);
-    color:#fff;font-size:8px;font-weight:700;padding:0.8mm 3.5mm;border-radius:10px;margin-bottom:1mm;
-  }
-  .rv .bf{display:flex;justify-content:center;gap:2mm;margin-top:0.5mm}
-  .rv .bn{
-    display:flex;align-items:center;gap:0.5mm;
-    background:#fff;border-radius:10px;padding:0.6mm 2mm;
-    font-size:7px;font-weight:700;color:#1B5E20;border:1px solid #A5D6A7;
-  }
-  .rv .bn i{font-size:8px;font-style:normal}
-  .rv .rn{font-size:6px;color:#999;margin-top:1mm}
+/* ── NOTICE (compact) ── */
+.nt{margin:0 5mm;padding:2.5mm 3.5mm;background:#FFF8E1;border:1px solid #FFE082;border-radius:8px;display:flex;flex-direction:column;gap:1.5mm}
+.nt .ntl{font-size:10px;font-weight:900;color:#E65100;text-align:center;margin-bottom:.5mm}
+.ng{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2mm}
+.ni{text-align:center}
+.ni .ic{font-size:16px}
+.ni .nm{font-size:8px;font-weight:900;color:#333;margin-top:.3mm}
+.ni .dt{font-size:6.5px;color:#666;line-height:1.45;margin-top:.3mm}
 
-  /* 푸터 */
-  .ft{
-    background:linear-gradient(135deg,#1B5E20,#2E7D32);
-    padding:2mm 4mm;display:flex;justify-content:space-between;align-items:center;
-  }
-  .ft .ab{
-    background:rgba(255,255,255,0.95);border-radius:5px;
-    padding:1mm 2.5mm;display:flex;align-items:center;gap:1.5mm;
-  }
-  .ft .ab .pi{font-size:10px}
-  .ft .ab .pn{font-size:10px;font-weight:900;color:#1B5E20}
-  .ft .ab .pl{font-size:5.5px;color:#666}
-  .ft .cp{color:rgba(255,255,255,0.7);font-size:5.5px;text-align:right;line-height:1.4}
+/* ── REVIEW ── */
+.rv{margin:2mm 5mm;padding:3mm 4mm;background:linear-gradient(135deg,#E8F5E9,#C8E6C9);border:1.5px dashed #66BB6A;border-radius:10px;text-align:center}
+.rv .sr{font-size:15px;letter-spacing:1px}
+.rv .rt{font-size:11px;font-weight:900;color:#1B5E20;margin:.5mm 0}
+.rv .rd{font-size:8px;color:#555;line-height:1.5}
+.rv .rh{display:inline-block;background:#E65100;color:#fff;font-size:8.5px;font-weight:700;padding:.8mm 4mm;border-radius:10px;margin:1.5mm 0}
+.rv .bf{display:flex;justify-content:center;gap:2mm;margin-top:1mm}
+.rv .bn{background:#fff;border:1px solid #A5D6A7;border-radius:10px;padding:.6mm 2.5mm;font-size:7px;font-weight:700;color:#2E7D32;display:flex;align-items:center;gap:.8mm}
+.rv .bn i{font-style:normal;font-size:9px}
+.rv .rn{font-size:6px;color:#888;margin-top:1mm}
 
-  @media print{
-    body{background:#fff!important;min-height:auto;display:block}
-    .print-btn{display:none!important}
-    .card{margin:0;box-shadow:none;page-break-inside:avoid}
-    .hd,.ft,.qi::before,.rv,.nt,.nc,.nc::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  }
+/* ── FOOTER ── */
+.ft{background:linear-gradient(135deg,#1B5E20,#2E7D32);padding:2.5mm 5mm;display:flex;justify-content:space-between;align-items:center}
+.ft .ab{background:#fff;border-radius:8px;padding:1.2mm 3mm;display:flex;align-items:center;gap:2mm}
+.ft .ab .pi{font-size:12px}
+.ft .ab .pn{font-size:11px;font-weight:900;color:#1B5E20}
+.ft .ab .pl{font-size:6px;color:#888}
+.ft .cp{font-size:6px;color:rgba(255,255,255,.7);text-align:right;line-height:1.5}
+
+@media print{
+html,body{height:auto;background:#fff!important;display:block}
+.pb{display:none!important}
+.c{width:148mm;height:210mm;margin:0;box-shadow:none;border-radius:0;page-break-inside:avoid}
+}
 </style>
 </head>
 <body>
-<button class="print-btn" onclick="window.print()"><span>🖨️</span> A5 인쇄</button>
-<div class="card">
+<button class="pb" onclick="window.print()">🖨️ A5 인쇄</button>
+<div class="c">
 
+  <!-- HEADER -->
   <div class="hd">
-    <img src="https://lh3.googleusercontent.com/d/1BefjpCuZaWUO1MhiPH38-aHV-M7e4Wfu" alt="로고">
-    <div class="t"><h1>미니 관리기 종합 안내</h1><span>4행정 198cc</span></div>
+    <img src="https://lh3.googleusercontent.com/d/1BefjpCuZaWUO1MhiPH38-aHV-M7e4Wfu" alt="백두농기">
+    <div class="tt">
+      <h1>미니 관리기 종합 안내</h1>
+      <span class="md">4행정 198cc</span>
+    </div>
   </div>
 
+  <!-- QR CODES (biggest area) -->
   <div class="qs">
-    <div class="qt"><b>📱 핸드폰 카메라</b>로 QR코드를 비추면 바로 접속됩니다</div>
+    <div class="st"><b>📱 핸드폰 카메라</b>로 QR코드를 비추면 바로 접속됩니다</div>
     <div class="qg">
       <div class="qi">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://manho021618-cyber.github.io/-/" alt="QR">
-        <div><div class="l">📖 사용설명서</div><div class="d">조립, 시동, 유지보수 방법</div><span class="b">웹 설명서</span></div>
+        <div class="inf"><div class="lb">📖 사용설명서</div><div class="ds">조립·시동·유지보수 방법</div><span class="bg">웹 설명서</span></div>
       </div>
       <div class="qi">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://manho021618-cyber.github.io/-/garden.html" alt="QR">
-        <div><div class="l">🌱 텃밭 재배 달력</div><div class="d">월별 파종·수확 시기 안내</div><span class="b">재배 가이드</span></div>
+        <div class="inf"><div class="lb">🌱 텃밭 재배 달력</div><div class="ds">월별 파종·수확 시기 안내</div><span class="bg">재배 가이드</span></div>
       </div>
       <div class="qi">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.youtube.com/watch?v=5Jo2-Y1QgVI" alt="QR">
-        <div><div class="l">🎬 초기 시동 영상</div><div class="d">영상으로 쉽게 따라하기</div><span class="b">YouTube</span></div>
+        <div class="inf"><div class="lb">🎬 초기 시동 영상</div><div class="ds">영상으로 쉽게 따라하기</div><span class="bg">YouTube</span></div>
       </div>
       <div class="qi">
         <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.youtube.com/watch?v=z4h5VyxXMPE" alt="QR">
-        <div><div class="l">🔧 초기 조립 영상</div><div class="d">영상으로 쉽게 따라하기</div><span class="b">YouTube</span></div>
+        <div class="inf"><div class="lb">🔧 초기 조립 영상</div><div class="ds">영상으로 쉽게 따라하기</div><span class="bg">YouTube</span></div>
       </div>
     </div>
   </div>
 
+  <!-- NOTICE (compact 1-row) -->
   <div class="nt">
-    <div class="tt">⚠️ 사용 전 꼭 확인하세요</div>
+    <div class="ntl">⚠️ 사용 전 꼭 확인하세요</div>
     <div class="ng">
-      <div class="nc"><div class="nh"><span class="ni">⛽</span><span class="nl">연료</span></div><div class="nd">일반 무연 휘발유만 사용하세요.<br>혼합유(2행정용) 절대 사용 금지!<br>급유 시 엔진을 반드시 끄세요.</div><div class="nw">※ 잘못된 연료 사용 시 엔진 고장</div></div>
-      <div class="nc"><div class="nh"><span class="ni">🛢️</span><span class="nl">엔진오일</span></div><div class="nd">최초 사용 전 반드시 오일 주입!<br>오일 없이 시동 시 엔진 파손됩니다.<br>용량: 약 130~150mL (SAE 10W-30)</div><div class="nw">※ 오일 미주입 시동 = 엔진 파손</div></div>
-      <div class="nc"><div class="nh"><span class="ni">🧤</span><span class="nl">보호장비</span></div><div class="nd">가죽 장갑, 보안경 반드시 착용.<br>안전화 착용, 헐렁한 옷 금지.<br>타인 15m 이내 접근 금지.</div><div class="nw">※ 회전 날에 의한 부상 주의</div></div>
-      <div class="nc"><div class="nh"><span class="ni">📖</span><span class="nl">설명서 확인</span></div><div class="nd">위 QR코드로 설명서를 꼭 읽으세요.<br>조립·시동 영상도 함께 시청하면<br>처음 사용도 어렵지 않습니다!</div><div class="nw">※ 문의사항은 A/S로 연락주세요</div></div>
+      <div class="ni"><div class="ic">⛽</div><div class="nm">연료</div><div class="dt">무연 휘발유만 사용<br>혼합유(2행정용) 금지</div></div>
+      <div class="ni"><div class="ic">🛢️</div><div class="nm">엔진오일</div><div class="dt">반드시 주입 후 시동<br>미주입 시 엔진 파손</div></div>
+      <div class="ni"><div class="ic">🧤</div><div class="nm">보호장비</div><div class="dt">장갑·보안경 착용<br>헐렁한 옷 금지</div></div>
+      <div class="ni"><div class="ic">📖</div><div class="nm">설명서</div><div class="dt">QR코드로 꼭 확인<br>영상도 함께 시청</div></div>
     </div>
   </div>
 
+  <!-- REVIEW -->
   <div class="rv">
-    <div class="st">⭐⭐⭐⭐⭐</div>
+    <div class="sr">⭐⭐⭐⭐⭐</div>
     <div class="rt">고객님의 소중한 후기를 들려주세요!</div>
-    <div class="rd">사용 후기를 남겨주시면 더 좋은 제품과 서비스로 보답하겠습니다<br><b>구매하신 쇼핑몰</b>에서 리뷰를 작성해 주세요</div>
+    <div class="rd">구매하신 쇼핑몰에서 리뷰를 작성해 주시면 아래 혜택을 드립니다</div>
     <span class="rh">📝 리뷰 작성 시 혜택</span>
     <div class="bf">
       <div class="bn"><i>🎁</i> 다음 구매 5% 할인</div>
-      <div class="bn"><i>🔧</i> 소모품 구매시 10% 할인</div>
+      <div class="bn"><i>🔧</i> 소모품 10% 할인</div>
       <div class="bn"><i>📞</i> A/S 우선 상담</div>
     </div>
     <div class="rn">* 리뷰 캡처를 A/S 연락처로 보내주시면 혜택 적용 | * 포토/영상 리뷰 시 추가 혜택</div>
   </div>
 
+  <!-- FOOTER -->
   <div class="ft">
     <div class="ab"><span class="pi">📞</span><div><div class="pl">A/S 문의</div><div class="pn">010-3019-8259</div></div></div>
-    <div class="cp">© 백두농기 | QR코드는 영구 유효합니다<br>내용은 사전 공지 없이 변경될 수 있습니다</div>
+    <div class="cp">© 백두농기 | QR코드는 영구 유효합니다</div>
   </div>
 
 </div>
