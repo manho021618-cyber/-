@@ -25,7 +25,6 @@
     cursor:pointer;box-shadow:0 4px 16px rgba(27,94,32,0.4);
     display:flex;align-items:center;gap:6px;
   }
-  .print-btn:hover{transform:translateY(-2px)}
   .print-btn .ico{font-size:18px}
 
   .card{
@@ -36,118 +35,150 @@
     display:flex;flex-direction:column;
   }
 
-  /* 헤더 */
+  /* ── 헤더 ── */
   .header{
     background:linear-gradient(135deg,#1B5E20 0%,#2E7D32 50%,#388E3C 100%);
-    padding:5mm 8mm 4.5mm;text-align:center;
+    padding:5mm 6mm 4mm;
+    display:flex;align-items:center;gap:4mm;
     flex-shrink:0;position:relative;
-  }
-  .header::after{
-    content:'';position:absolute;bottom:-4mm;left:0;right:0;height:8mm;
-    background:linear-gradient(135deg,#1B5E20,#388E3C);
-    clip-path:ellipse(55% 100% at 50% 0%);opacity:0.1;
   }
   .header .logo{
     height:14mm;background:rgba(255,255,255,0.95);
-    padding:1.5mm 3mm;border-radius:6px;
-    filter:drop-shadow(0 1px 4px rgba(0,0,0,0.15));
+    padding:1.2mm 2.5mm;border-radius:5px;
+    flex-shrink:0;
   }
-  .header h1{color:#fff;font-size:14px;font-weight:900;margin-top:1.5mm;text-shadow:0 1px 3px rgba(0,0,0,0.2)}
-  .header .model{
-    display:inline-block;margin-top:1.5mm;
+  .header .title-area{color:#fff}
+  .header .title-area h1{font-size:14px;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,0.2)}
+  .header .title-area .sub{display:flex;align-items:center;gap:2mm;margin-top:1mm}
+  .header .title-area .model{
     background:linear-gradient(135deg,#FF6F00,#FF8F00);
-    color:#fff;font-size:9px;font-weight:700;
-    padding:0.8mm 3.5mm;border-radius:14px;
+    color:#fff;font-size:8.5px;font-weight:700;
+    padding:0.6mm 3mm;border-radius:12px;
   }
+  .header .title-area .as-inline{font-size:8px;opacity:0.8}
 
-  /* 장식 */
+  /* ── 장식 ── */
   .deco{position:absolute;border-radius:50%;background:#1B5E20}
-  .d1{width:35mm;height:35mm;top:-8mm;right:-8mm;opacity:0.05}
-  .d2{width:20mm;height:20mm;bottom:50mm;left:-6mm;opacity:0.03}
+  .d1{width:30mm;height:30mm;top:-8mm;right:-8mm;opacity:0.05}
 
-  /* 콘텐츠 영역 — 균등 배분 */
-  .content{
-    flex:1;display:flex;flex-direction:column;
-    justify-content:space-between;
-    padding:4mm 6mm 3mm;position:relative;z-index:1;
+  /* ── QR 섹션 ── */
+  .qr-section{
+    padding:3.5mm 5mm 2mm;flex-shrink:0;
+    background:linear-gradient(180deg,#f8fdf8,#ffffff);
   }
-
-  /* 스캔 안내 */
-  .scan{text-align:center}
-  .scan .line{height:1px;background:linear-gradient(90deg,transparent,#1B5E20,transparent);margin-bottom:1.5mm}
-  .scan p{font-size:8.5px;color:#555}
-  .scan p strong{color:#1B5E20;font-weight:700}
-
-  /* QR 그리드 */
-  .qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:3mm 5mm}
+  .qr-title{
+    text-align:center;font-size:8.5px;color:#555;margin-bottom:2.5mm;
+    padding-bottom:1.5mm;
+    border-bottom:1px solid #e0e0e0;
+  }
+  .qr-title strong{color:#1B5E20}
+  .qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm 4mm}
   .qr-item{
     display:flex;align-items:center;gap:2.5mm;
-    background:linear-gradient(135deg,#fafffe,#f5f5f0);
-    border-radius:10px;padding:2.5mm 3mm;
+    background:#fff;border-radius:8px;padding:2.5mm 3mm;
     border:1px solid #e8e8e8;position:relative;overflow:hidden;
+    box-shadow:0 1px 3px rgba(0,0,0,0.03);
   }
   .qr-item::before{
-    content:'';position:absolute;top:0;left:0;width:3px;height:100%;
-    border-radius:10px 0 0 10px;
+    content:'';position:absolute;top:0;left:0;width:2.5px;height:100%;
   }
-  .qr-item:nth-child(1)::before{background:linear-gradient(180deg,#1B5E20,#66BB6A)}
-  .qr-item:nth-child(2)::before{background:linear-gradient(180deg,#E65100,#FFB74D)}
-  .qr-item:nth-child(3)::before{background:linear-gradient(180deg,#C62828,#EF9A9A)}
-  .qr-item:nth-child(4)::before{background:linear-gradient(180deg,#1565C0,#90CAF9)}
+  .qr-item:nth-child(1)::before{background:#1B5E20}
+  .qr-item:nth-child(2)::before{background:#E65100}
+  .qr-item:nth-child(3)::before{background:#C62828}
+  .qr-item:nth-child(4)::before{background:#1565C0}
   .qr-item .qr-img{
-    width:18mm;height:18mm;border-radius:6px;
-    border:1.5px solid #eee;background:#fff;padding:0.5mm;
+    width:17mm;height:17mm;border-radius:4px;
+    border:1px solid #eee;background:#fff;padding:0.3mm;
   }
   .qr-info{flex:1}
-  .qr-info .label{font-size:9.5px;font-weight:700;margin-bottom:0.3mm;display:flex;align-items:center;gap:1mm}
+  .qr-info .label{font-size:9px;font-weight:700;display:flex;align-items:center;gap:1mm}
   .qr-item:nth-child(1) .label{color:#1B5E20}
   .qr-item:nth-child(2) .label{color:#E65100}
   .qr-item:nth-child(3) .label{color:#C62828}
   .qr-item:nth-child(4) .label{color:#1565C0}
-  .qr-info .icon{font-size:11px}
-  .qr-info .desc{font-size:7px;color:#666;line-height:1.5}
+  .qr-info .icon{font-size:10px}
+  .qr-info .desc{font-size:6.5px;color:#777;line-height:1.4;margin-top:0.3mm}
   .qr-info .badge{
-    display:inline-block;font-size:6px;font-weight:700;
-    padding:0.3mm 2mm;border-radius:8px;margin-top:0.3mm;
+    display:inline-block;font-size:5.5px;font-weight:700;
+    padding:0.2mm 1.8mm;border-radius:6px;margin-top:0.3mm;
   }
   .qr-item:nth-child(1) .badge{background:#E8F5E9;color:#2E7D32}
   .qr-item:nth-child(2) .badge{background:#FFF3E0;color:#E65100}
   .qr-item:nth-child(3) .badge{background:#FFEBEE;color:#C62828}
   .qr-item:nth-child(4) .badge{background:#E3F2FD;color:#1565C0}
 
-  /* 리뷰 유도 */
-  .review{
-    padding:3.5mm 4mm;
-    background:linear-gradient(135deg,#FFF8E1 0%,#FFFDE7 100%);
-    border:1.5px dashed #FFB300;border-radius:10px;
-    text-align:center;
+  /* ── 제품 특징 섹션 ── */
+  .features{
+    padding:3mm 5mm 2.5mm;flex-shrink:0;
   }
-  .review .stars{font-size:16px;letter-spacing:1.5px;margin-bottom:0.8mm}
-  .review .r-title{font-size:11px;font-weight:900;color:#E65100;margin-bottom:0.8mm}
-  .review .r-desc{font-size:8px;color:#555;line-height:1.6;margin-bottom:1.2mm}
+  .features .f-title{
+    font-size:9px;font-weight:900;color:#1B5E20;
+    text-align:center;margin-bottom:2mm;
+    padding-bottom:1mm;border-bottom:1px solid #e0e0e0;
+  }
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2mm}
+  .feat{
+    text-align:center;padding:2.5mm 2mm;
+    background:linear-gradient(135deg,#f0f7f0,#e8f5e9);
+    border-radius:8px;border:1px solid #c8e6c9;
+  }
+  .feat .f-icon{font-size:18px;margin-bottom:0.5mm}
+  .feat .f-name{font-size:7.5px;font-weight:700;color:#1B5E20}
+  .feat .f-desc{font-size:6px;color:#666;margin-top:0.3mm;line-height:1.4}
+
+  /* ── 리뷰 유도 ── */
+  .review{
+    margin:2.5mm 5mm;padding:3.5mm 4mm;
+    background:linear-gradient(135deg,#FFF8E1,#FFFDE7);
+    border:1.5px dashed #FFB300;border-radius:10px;
+    text-align:center;flex-shrink:0;
+  }
+  .review .stars{font-size:14px;letter-spacing:1px;margin-bottom:0.5mm}
+  .review .r-title{font-size:10.5px;font-weight:900;color:#E65100;margin-bottom:0.8mm}
+  .review .r-desc{font-size:7.5px;color:#555;line-height:1.5;margin-bottom:1mm}
   .review .r-highlight{
     display:inline-block;
     background:linear-gradient(135deg,#E65100,#FF8F00);
-    color:#fff;font-size:8.5px;font-weight:700;
-    padding:0.8mm 4mm;border-radius:14px;
-    margin-bottom:1.2mm;
+    color:#fff;font-size:8px;font-weight:700;
+    padding:0.8mm 4mm;border-radius:12px;
+    margin-bottom:1mm;
   }
-  .review .benefits{display:flex;justify-content:center;gap:2.5mm;flex-wrap:wrap;margin-top:0.8mm}
+  .review .benefits{display:flex;justify-content:center;gap:2mm;margin-top:0.8mm}
   .review .ben{
-    display:flex;align-items:center;gap:1mm;
-    background:#fff;border-radius:14px;padding:0.8mm 2.5mm;
-    font-size:7.5px;font-weight:700;color:#E65100;
+    display:flex;align-items:center;gap:0.8mm;
+    background:#fff;border-radius:12px;padding:0.8mm 2.5mm;
+    font-size:7px;font-weight:700;color:#E65100;
     border:1px solid #FFE0B2;
   }
-  .review .ben .bi{font-size:10px}
-  .review .r-note{font-size:6.5px;color:#999;margin-top:1.2mm;line-height:1.5}
+  .review .ben .bi{font-size:9px}
+  .review .r-note{font-size:6px;color:#999;margin-top:1mm;line-height:1.4}
 
-  /* 하단 */
+  /* ── 관리 팁 ── */
+  .tips{
+    padding:2.5mm 5mm;flex-shrink:0;
+  }
+  .tips .t-title{
+    font-size:9px;font-weight:900;color:#1B5E20;
+    text-align:center;margin-bottom:1.5mm;
+    padding-bottom:1mm;border-bottom:1px solid #e0e0e0;
+  }
+  .tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm}
+  .tip{
+    display:flex;align-items:flex-start;gap:2mm;
+    padding:2mm 2.5mm;
+    background:#f5f5f0;border-radius:6px;
+    border:1px solid #e8e8e8;
+  }
+  .tip .t-icon{font-size:14px;flex-shrink:0;margin-top:0.3mm}
+  .tip .t-text .t-name{font-size:7.5px;font-weight:700;color:#333}
+  .tip .t-text .t-desc{font-size:6px;color:#777;line-height:1.4;margin-top:0.2mm}
+
+  /* ── 하단 ── */
   .footer{
     background:linear-gradient(135deg,#1B5E20,#2E7D32);
-    padding:3mm 6mm;
+    padding:3mm 5mm;
     display:flex;justify-content:space-between;align-items:center;
-    flex-shrink:0;
+    flex-shrink:0;margin-top:auto;
   }
   .footer .as-box{
     background:rgba(255,255,255,0.95);border-radius:8px;
@@ -155,14 +186,14 @@
   }
   .footer .as-box .ph-icon{font-size:12px}
   .footer .as-box .ph-num{font-size:11px;font-weight:900;color:#1B5E20}
-  .footer .as-box .ph-label{font-size:6.5px;color:#666}
-  .footer .copy{color:rgba(255,255,255,0.7);font-size:6.5px;text-align:right;line-height:1.5}
+  .footer .as-box .ph-label{font-size:6px;color:#666}
+  .footer .copy{color:rgba(255,255,255,0.7);font-size:6px;text-align:right;line-height:1.5}
 
   @media print{
     body{background:#fff!important;min-height:auto;display:block}
     .print-btn{display:none!important}
     .card{width:148mm;height:210mm;margin:0;box-shadow:none;border-radius:0;page-break-inside:avoid}
-    .header,.footer,.qr-item::before,.deco,.review{
+    .header,.footer,.qr-item::before,.deco,.review,.features,.tips,.feat{
       -webkit-print-color-adjust:exact;print-color-adjust:exact;
     }
   }
@@ -176,31 +207,28 @@
 
 <div class="card">
   <div class="deco d1"></div>
-  <div class="deco d2"></div>
 
-  <!-- 헤더 -->
+  <!-- 헤더 (가로 배치로 공간 절약) -->
   <div class="header">
     <img class="logo" src="https://lh3.googleusercontent.com/d/1BefjpCuZaWUO1MhiPH38-aHV-M7e4Wfu" alt="백두농기">
-    <h1>미니 관리기 종합 안내</h1>
-    <span class="model">4행정 198cc</span>
+    <div class="title-area">
+      <h1>미니 관리기 종합 안내</h1>
+      <div class="sub">
+        <span class="model">4행정 198cc</span>
+        <span class="as-inline">A/S 010-3019-8259</span>
+      </div>
+    </div>
   </div>
 
-  <!-- 콘텐츠 영역 (균등 배분) -->
-  <div class="content">
-
-    <!-- 스캔 안내 -->
-    <div class="scan">
-      <div class="line"></div>
-      <p><strong>📱 핸드폰 카메라</strong>로 QR코드를 비추시면 바로 접속됩니다</p>
-    </div>
-
-    <!-- QR 코드 -->
+  <!-- QR 코드 -->
+  <div class="qr-section">
+    <div class="qr-title"><strong>📱 핸드폰 카메라</strong>로 QR코드를 비추면 바로 접속됩니다</div>
     <div class="qr-grid">
       <div class="qr-item">
         <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://manho021618-cyber.github.io/-/" alt="QR">
         <div class="qr-info">
           <div class="label"><span class="icon">📖</span> 사용설명서</div>
-          <div class="desc">조립, 시동, 유지보수<br>방법을 확인하세요</div>
+          <div class="desc">조립, 시동, 유지보수 방법</div>
           <span class="badge">웹 설명서</span>
         </div>
       </div>
@@ -208,7 +236,7 @@
         <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://manho021618-cyber.github.io/-/garden.html" alt="QR">
         <div class="qr-info">
           <div class="label"><span class="icon">🌱</span> 텃밭 재배 달력</div>
-          <div class="desc">월별 파종·수확<br>최적 시기 안내</div>
+          <div class="desc">월별 파종·수확 시기 안내</div>
           <span class="badge">재배 가이드</span>
         </div>
       </div>
@@ -216,7 +244,7 @@
         <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.youtube.com/watch?v=5Jo2-Y1QgVI" alt="QR">
         <div class="qr-info">
           <div class="label"><span class="icon">🎬</span> 초기 시동 영상</div>
-          <div class="desc">시동 방법을 영상으로<br>쉽게 따라하세요</div>
+          <div class="desc">영상으로 쉽게 따라하기</div>
           <span class="badge">YouTube</span>
         </div>
       </div>
@@ -224,32 +252,87 @@
         <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.youtube.com/watch?v=z4h5VyxXMPE" alt="QR">
         <div class="qr-info">
           <div class="label"><span class="icon">🔧</span> 초기 조립 영상</div>
-          <div class="desc">조립 과정을 영상으로<br>쉽게 따라하세요</div>
+          <div class="desc">영상으로 쉽게 따라하기</div>
           <span class="badge">YouTube</span>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- 리뷰 유도 -->
-    <div class="review">
-      <div class="stars">⭐⭐⭐⭐⭐</div>
-      <div class="r-title">고객님의 소중한 후기를 들려주세요!</div>
-      <div class="r-desc">
-        사용 후기를 남겨주시면 더 좋은 제품과 서비스로 보답하겠습니다<br>
-        <strong>구매하신 쇼핑몰</strong>에서 리뷰를 작성해 주세요
+  <!-- 제품 특징 -->
+  <div class="features">
+    <div class="f-title">🌿 제품 특징</div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="f-icon">💪</div>
+        <div class="f-name">강력한 엔진</div>
+        <div class="f-desc">198cc 4행정<br>6.5마력 출력</div>
       </div>
-      <span class="r-highlight">📝 리뷰 작성 시 혜택</span>
-      <div class="benefits">
-        <div class="ben"><span class="bi">🎁</span> 다음 구매 5% 할인</div>
-        <div class="ben"><span class="bi">🔧</span> 소모품 구매시 10% 할인</div>
-        <div class="ben"><span class="bi">📞</span> A/S 우선 상담</div>
+      <div class="feat">
+        <div class="f-icon">🪶</div>
+        <div class="f-name">가벼운 무게</div>
+        <div class="f-desc">여성도 쉽게<br>조작 가능</div>
       </div>
-      <div class="r-note">
-        * 리뷰 캡처를 A/S 연락처로 보내주시면 혜택 적용<br>
-        * 포토/영상 리뷰 시 추가 혜택
+      <div class="feat">
+        <div class="f-icon">⚙️</div>
+        <div class="f-name">간편한 관리</div>
+        <div class="f-desc">오일 교환만으로<br>오래 사용</div>
       </div>
     </div>
+  </div>
 
+  <!-- 리뷰 유도 -->
+  <div class="review">
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="r-title">고객님의 소중한 후기를 들려주세요!</div>
+    <div class="r-desc">
+      사용 후기를 남겨주시면 더 좋은 제품과 서비스로 보답하겠습니다<br>
+      <strong>구매하신 쇼핑몰</strong>에서 리뷰를 작성해 주세요
+    </div>
+    <span class="r-highlight">📝 리뷰 작성 시 혜택</span>
+    <div class="benefits">
+      <div class="ben"><span class="bi">🎁</span> 다음 구매 5% 할인</div>
+      <div class="ben"><span class="bi">🔧</span> 소모품 구매시 10% 할인</div>
+      <div class="ben"><span class="bi">📞</span> A/S 우선 상담</div>
+    </div>
+    <div class="r-note">
+      * 리뷰 캡처를 A/S 연락처로 보내주시면 혜택 적용 &nbsp;|&nbsp; * 포토/영상 리뷰 시 추가 혜택
+    </div>
+  </div>
+
+  <!-- 관리 팁 -->
+  <div class="tips">
+    <div class="t-title">🔧 간단 관리 팁</div>
+    <div class="tip-grid">
+      <div class="tip">
+        <div class="t-icon">🛢️</div>
+        <div class="t-text">
+          <div class="t-name">엔진오일 점검</div>
+          <div class="t-desc">사용 전 매번 오일량 확인<br>SAE 10W-30 사용</div>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="t-icon">⛽</div>
+        <div class="t-text">
+          <div class="t-name">연료 관리</div>
+          <div class="t-desc">무연 휘발유만 사용<br>장기보관 시 연료 배출</div>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="t-icon">🔌</div>
+        <div class="t-text">
+          <div class="t-name">점화플러그</div>
+          <div class="t-desc">F7RTC 규격<br>갭 0.6~0.7mm 유지</div>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="t-icon">🫧</div>
+        <div class="t-text">
+          <div class="t-name">에어필터</div>
+          <div class="t-desc">50시간마다 세척<br>100시간마다 교체</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- 하단 -->
@@ -262,8 +345,7 @@
       </div>
     </div>
     <div class="copy">
-      © 백두농기<br>
-      QR코드는 영구 유효합니다<br>
+      © 백두농기 | QR코드는 영구 유효합니다<br>
       내용은 사전 공지 없이 변경될 수 있습니다
     </div>
   </div>
