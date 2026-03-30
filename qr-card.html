@@ -39,8 +39,7 @@
   .header{
     background:linear-gradient(135deg,#1B5E20 0%,#2E7D32 50%,#388E3C 100%);
     padding:4mm 6mm 3.5mm;
-    text-align:center;
-    flex-shrink:0;
+    text-align:center;flex-shrink:0;
   }
   .header .logo{
     height:15mm;background:rgba(255,255,255,0.95);
@@ -61,8 +60,7 @@
   }
   .qr-title{
     text-align:center;font-size:10px;color:#555;margin-bottom:2mm;
-    padding-bottom:1.5mm;
-    border-bottom:1px solid #e0e0e0;
+    padding-bottom:1.5mm;border-bottom:1px solid #e0e0e0;
   }
   .qr-title strong{color:#1B5E20}
   .qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm 4mm}
@@ -99,38 +97,56 @@
   .qr-item:nth-child(3) .badge{background:#FFEBEE;color:#C62828}
   .qr-item:nth-child(4) .badge{background:#E3F2FD;color:#1565C0}
 
-  /* ── 사용 전 안내 ── */
+  /* ── 사용 전 안내 (확대) ── */
   .notice{
-    margin:2.5mm 5mm;padding:3mm 4mm;
-    background:linear-gradient(135deg,#E3F2FD,#BBDEFB);
-    border-radius:8px;border:1px solid #90CAF9;
+    margin:2.5mm 5mm;padding:3.5mm 4.5mm;
+    background:linear-gradient(135deg,#FFF3E0,#FFF8E1);
+    border-radius:10px;border:1.5px solid #FFCC80;
     flex-shrink:0;
   }
   .notice .n-title{
-    font-size:11px;font-weight:900;color:#1565C0;
-    text-align:center;margin-bottom:2mm;
+    font-size:11px;font-weight:900;color:#E65100;
+    text-align:center;margin-bottom:2.5mm;
+    padding-bottom:1.5mm;border-bottom:1px solid #FFCC80;
   }
-  .notice-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm 3mm}
-  .notice-item{
-    display:flex;align-items:center;gap:1.5mm;
-    font-size:9px;color:#333;
+  .notice-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm 4mm}
+  .notice-card{
+    background:#fff;border-radius:8px;padding:2.5mm 3mm;
+    border:1px solid #f0e0c0;position:relative;overflow:hidden;
   }
-  .notice-item .n-icon{font-size:12px;flex-shrink:0}
-  .notice-item strong{color:#1565C0}
+  .notice-card::before{
+    content:'';position:absolute;top:0;left:0;width:3px;height:100%;
+  }
+  .notice-card:nth-child(1)::before{background:#E65100}
+  .notice-card:nth-child(2)::before{background:#1565C0}
+  .notice-card:nth-child(3)::before{background:#C62828}
+  .notice-card:nth-child(4)::before{background:#2E7D32}
+  .notice-card .nc-top{display:flex;align-items:center;gap:1.5mm;margin-bottom:0.8mm}
+  .notice-card .nc-icon{font-size:13px}
+  .notice-card .nc-label{font-size:9.5px;font-weight:900}
+  .notice-card:nth-child(1) .nc-label{color:#E65100}
+  .notice-card:nth-child(2) .nc-label{color:#1565C0}
+  .notice-card:nth-child(3) .nc-label{color:#C62828}
+  .notice-card:nth-child(4) .nc-label{color:#2E7D32}
+  .notice-card .nc-desc{font-size:7.5px;color:#555;line-height:1.5}
+  .notice-card .nc-warn{
+    font-size:6.5px;color:#C62828;font-weight:700;
+    margin-top:0.5mm;
+  }
 
   /* ── 리뷰 유도 ── */
   .review{
     margin:2.5mm 5mm;padding:3.5mm 4mm;
-    background:linear-gradient(135deg,#FFF8E1,#FFFDE7);
-    border:1.5px dashed #FFB300;border-radius:10px;
+    background:linear-gradient(135deg,#E8F5E9,#F1F8E9);
+    border:1.5px dashed #66BB6A;border-radius:10px;
     text-align:center;flex-shrink:0;
   }
   .review .stars{font-size:16px;letter-spacing:1.5px;margin-bottom:0.5mm}
-  .review .r-title{font-size:13px;font-weight:900;color:#E65100;margin-bottom:1mm}
+  .review .r-title{font-size:12px;font-weight:900;color:#1B5E20;margin-bottom:1mm}
   .review .r-desc{font-size:9px;color:#555;line-height:1.5;margin-bottom:1.5mm}
   .review .r-highlight{
     display:inline-block;
-    background:linear-gradient(135deg,#E65100,#FF8F00);
+    background:linear-gradient(135deg,#1B5E20,#43A047);
     color:#fff;font-size:9.5px;font-weight:700;
     padding:1mm 4.5mm;border-radius:12px;
     margin-bottom:1.5mm;
@@ -139,8 +155,8 @@
   .review .ben{
     display:flex;align-items:center;gap:1mm;
     background:#fff;border-radius:12px;padding:1mm 3mm;
-    font-size:8px;font-weight:700;color:#E65100;
-    border:1px solid #FFE0B2;
+    font-size:8px;font-weight:700;color:#1B5E20;
+    border:1px solid #A5D6A7;
   }
   .review .ben .bi{font-size:10px}
   .review .r-note{font-size:7px;color:#999;margin-top:1.5mm;line-height:1.4}
@@ -165,7 +181,7 @@
     body{background:#fff!important;min-height:auto;display:block}
     .print-btn{display:none!important}
     .card{width:148mm;height:210mm;margin:0;box-shadow:none;border-radius:0;page-break-inside:avoid}
-    .header,.footer,.qr-item::before,.deco,.review,.notice{
+    .header,.footer,.qr-item::before,.review,.notice,.notice-card,.notice-card::before{
       -webkit-print-color-adjust:exact;print-color-adjust:exact;
     }
   }
@@ -225,25 +241,57 @@
     </div>
   </div>
 
-  <!-- 사용 전 안내 -->
+  <!-- 사용 전 안내 (상세) -->
   <div class="notice">
-    <div class="n-title">📋 사용 전 꼭 확인하세요</div>
+    <div class="n-title">⚠️ 사용 전 꼭 확인하세요</div>
     <div class="notice-grid">
-      <div class="notice-item">
-        <span class="n-icon">⛽</span>
-        <span><strong>연료:</strong> 무연 휘발유만 사용</span>
+      <div class="notice-card">
+        <div class="nc-top">
+          <span class="nc-icon">⛽</span>
+          <span class="nc-label">연료</span>
+        </div>
+        <div class="nc-desc">
+          일반 무연 휘발유만 사용하세요.<br>
+          혼합유(2행정용) 절대 사용 금지!<br>
+          급유 시 엔진을 반드시 끄세요.
+        </div>
+        <div class="nc-warn">※ 잘못된 연료 사용 시 엔진 고장</div>
       </div>
-      <div class="notice-item">
-        <span class="n-icon">🛢️</span>
-        <span><strong>엔진오일:</strong> 반드시 주입 후 시동</span>
+      <div class="notice-card">
+        <div class="nc-top">
+          <span class="nc-icon">🛢️</span>
+          <span class="nc-label">엔진오일</span>
+        </div>
+        <div class="nc-desc">
+          최초 사용 전 반드시 오일 주입!<br>
+          오일 없이 시동 시 엔진이 망가집니다.<br>
+          용량: 약 130~150mL (SAE 10W-30)
+        </div>
+        <div class="nc-warn">※ 오일 미주입 시동 = 엔진 파손</div>
       </div>
-      <div class="notice-item">
-        <span class="n-icon">🧤</span>
-        <span><strong>보호장비:</strong> 장갑·보안경 착용</span>
+      <div class="notice-card">
+        <div class="nc-top">
+          <span class="nc-icon">🧤</span>
+          <span class="nc-label">보호장비</span>
+        </div>
+        <div class="nc-desc">
+          가죽 장갑, 보안경 반드시 착용.<br>
+          안전화 착용, 헐렁한 옷 금지.<br>
+          작업 중 타인 15m 이내 접근 금지.
+        </div>
+        <div class="nc-warn">※ 회전 날에 의한 부상 주의</div>
       </div>
-      <div class="notice-item">
-        <span class="n-icon">📖</span>
-        <span><strong>설명서:</strong> QR코드로 꼭 확인!</span>
+      <div class="notice-card">
+        <div class="nc-top">
+          <span class="nc-icon">📖</span>
+          <span class="nc-label">설명서 확인</span>
+        </div>
+        <div class="nc-desc">
+          위 QR코드로 설명서를 꼭 읽으세요.<br>
+          조립·시동 영상도 함께 시청하면<br>
+          처음 사용도 어렵지 않습니다!
+        </div>
+        <div class="nc-warn">※ 문의사항은 A/S로 연락주세요</div>
       </div>
     </div>
   </div>
