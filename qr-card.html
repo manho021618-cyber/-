@@ -30,32 +30,30 @@
     background:#fff;
     box-shadow:0 6px 24px rgba(0,0,0,0.12);
     overflow:hidden;
+    display:flex;flex-direction:column;
   }
 
-  /* 헤더 28mm */
+  /* 헤더 */
   .header{
-    height:28mm;
     background:linear-gradient(135deg,#1B5E20,#2E7D32,#388E3C);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:4mm 6mm;text-align:center;flex-shrink:0;
   }
-  .header .logo{height:12mm;background:rgba(255,255,255,0.95);padding:1mm 2.5mm;border-radius:4px}
-  .header h1{color:#fff;font-size:14px;font-weight:900;margin-top:1mm}
+  .header .logo{height:13mm;background:rgba(255,255,255,0.95);padding:1mm 2.5mm;border-radius:4px}
+  .header h1{color:#fff;font-size:16px;font-weight:900;margin-top:1.5mm}
   .header .model{
-    margin-top:0.8mm;background:linear-gradient(135deg,#FF6F00,#FF8F00);
-    color:#fff;font-size:9px;font-weight:700;padding:0.6mm 3mm;border-radius:10px;
+    display:inline-block;margin-top:1mm;
+    background:linear-gradient(135deg,#FF6F00,#FF8F00);
+    color:#fff;font-size:10px;font-weight:700;padding:0.8mm 3.5mm;border-radius:10px;
   }
 
-  /* QR 52mm */
-  .qr-section{
-    height:52mm;padding:2mm 5mm 1.5mm;
-    background:linear-gradient(180deg,#f8fdf8,#fff);
-  }
-  .qr-title{text-align:center;font-size:9px;color:#555;margin-bottom:1.5mm;padding-bottom:1mm;border-bottom:1px solid #e0e0e0}
+  /* QR */
+  .qr-section{padding:2.5mm 5mm 1.5mm;flex:0 0 auto;background:linear-gradient(180deg,#f8fdf8,#fff)}
+  .qr-title{text-align:center;font-size:10px;color:#555;margin-bottom:2mm;padding-bottom:1mm;border-bottom:1px solid #e0e0e0}
   .qr-title strong{color:#1B5E20}
   .qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm 3.5mm}
   .qr-item{
-    display:flex;align-items:center;gap:2mm;
-    background:#fff;border-radius:7px;padding:1.8mm 2.5mm;
+    display:flex;align-items:center;gap:2.5mm;
+    background:#fff;border-radius:7px;padding:2mm 2.5mm;
     border:1px solid #e8e8e8;position:relative;overflow:hidden;
   }
   .qr-item::before{content:'';position:absolute;top:0;left:0;width:2.5px;height:100%}
@@ -65,79 +63,82 @@
   .qr-item:nth-child(4)::before{background:#1565C0}
   .qr-item .qr-img{width:16mm;height:16mm;border-radius:3px;border:1px solid #eee;padding:0.2mm}
   .qr-info{flex:1}
-  .qr-info .label{font-size:9px;font-weight:700;display:flex;align-items:center;gap:1mm}
+  .qr-info .label{font-size:10px;font-weight:700;display:flex;align-items:center;gap:1mm}
   .qr-item:nth-child(1) .label{color:#1B5E20}
   .qr-item:nth-child(2) .label{color:#E65100}
   .qr-item:nth-child(3) .label{color:#C62828}
   .qr-item:nth-child(4) .label{color:#1565C0}
-  .qr-info .icon{font-size:10px}
-  .qr-info .desc{font-size:7px;color:#666;line-height:1.3;margin-top:0.2mm}
-  .qr-info .badge{display:inline-block;font-size:5.5px;font-weight:700;padding:0.2mm 1.5mm;border-radius:5px;margin-top:0.2mm}
+  .qr-info .icon{font-size:11px}
+  .qr-info .desc{font-size:8px;color:#666;line-height:1.4;margin-top:0.3mm}
+  .qr-info .badge{display:inline-block;font-size:6px;font-weight:700;padding:0.2mm 1.5mm;border-radius:5px;margin-top:0.2mm}
   .qr-item:nth-child(1) .badge{background:#E8F5E9;color:#2E7D32}
   .qr-item:nth-child(2) .badge{background:#FFF3E0;color:#E65100}
   .qr-item:nth-child(3) .badge{background:#FFEBEE;color:#C62828}
   .qr-item:nth-child(4) .badge{background:#E3F2FD;color:#1565C0}
 
-  /* 주의사항 52mm */
+  /* 주의사항 */
   .notice{
-    height:52mm;margin:0 5mm;padding:2.5mm 3.5mm;
+    margin:2mm 5mm;padding:3mm 3.5mm;flex:1 1 auto;
     background:linear-gradient(135deg,#FFF3E0,#FFF8E1);
     border-radius:8px;border:1px solid #FFCC80;
+    display:flex;flex-direction:column;
   }
-  .notice .n-title{font-size:10px;font-weight:900;color:#E65100;text-align:center;margin-bottom:2mm;padding-bottom:1mm;border-bottom:1px solid #FFCC80}
-  .notice-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm 3mm}
-  .notice-card{background:#fff;border-radius:6px;padding:2mm 2.5mm;border:1px solid #f0e0c0;position:relative;overflow:hidden}
-  .notice-card::before{content:'';position:absolute;top:0;left:0;width:2.5px;height:100%}
+  .notice .n-title{font-size:12px;font-weight:900;color:#E65100;text-align:center;margin-bottom:2mm;padding-bottom:1.5mm;border-bottom:1px solid #FFCC80}
+  .notice-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm 3mm;flex:1}
+  .notice-card{
+    background:#fff;border-radius:6px;padding:2.5mm 3mm;
+    border:1px solid #f0e0c0;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .notice-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%}
   .notice-card:nth-child(1)::before{background:#E65100}
   .notice-card:nth-child(2)::before{background:#1565C0}
   .notice-card:nth-child(3)::before{background:#C62828}
   .notice-card:nth-child(4)::before{background:#2E7D32}
-  .notice-card .nc-top{display:flex;align-items:center;gap:1mm;margin-bottom:0.5mm}
-  .notice-card .nc-icon{font-size:10px}
-  .notice-card .nc-label{font-size:8.5px;font-weight:900}
+  .notice-card .nc-top{display:flex;align-items:center;gap:1.5mm;margin-bottom:1mm}
+  .notice-card .nc-icon{font-size:13px}
+  .notice-card .nc-label{font-size:10px;font-weight:900}
   .notice-card:nth-child(1) .nc-label{color:#E65100}
   .notice-card:nth-child(2) .nc-label{color:#1565C0}
   .notice-card:nth-child(3) .nc-label{color:#C62828}
   .notice-card:nth-child(4) .nc-label{color:#2E7D32}
-  .notice-card .nc-desc{font-size:6.5px;color:#555;line-height:1.45}
-  .notice-card .nc-warn{font-size:6px;color:#C62828;font-weight:700;margin-top:0.3mm}
+  .notice-card .nc-desc{font-size:8px;color:#444;line-height:1.55}
+  .notice-card .nc-warn{font-size:7px;color:#C62828;font-weight:700;margin-top:0.8mm}
 
-  /* 리뷰 42mm */
+  /* 리뷰 */
   .review{
-    height:42mm;margin:2mm 5mm 0;padding:2.5mm 3.5mm;
+    margin:0 5mm 2mm;padding:3mm 3.5mm;flex:0 0 auto;
     background:linear-gradient(135deg,#E8F5E9,#F1F8E9);
     border:1.5px dashed #66BB6A;border-radius:8px;text-align:center;
   }
-  .review .stars{font-size:14px;letter-spacing:1px;margin-bottom:0.3mm}
-  .review .r-title{font-size:11px;font-weight:900;color:#1B5E20;margin-bottom:0.8mm}
-  .review .r-desc{font-size:8px;color:#555;line-height:1.45;margin-bottom:1mm}
+  .review .stars{font-size:15px;letter-spacing:1px;margin-bottom:0.5mm}
+  .review .r-title{font-size:12px;font-weight:900;color:#1B5E20;margin-bottom:1mm}
+  .review .r-desc{font-size:9px;color:#555;line-height:1.5;margin-bottom:1.5mm}
   .review .r-highlight{
     display:inline-block;background:linear-gradient(135deg,#1B5E20,#43A047);
-    color:#fff;font-size:8.5px;font-weight:700;padding:0.8mm 4mm;border-radius:10px;margin-bottom:1mm;
+    color:#fff;font-size:9px;font-weight:700;padding:0.8mm 4mm;border-radius:10px;margin-bottom:1.5mm;
   }
   .review .benefits{display:flex;justify-content:center;gap:2mm;margin-top:0.8mm}
   .review .ben{
     display:flex;align-items:center;gap:0.8mm;
     background:#fff;border-radius:10px;padding:0.8mm 2.5mm;
-    font-size:7px;font-weight:700;color:#1B5E20;border:1px solid #A5D6A7;
+    font-size:7.5px;font-weight:700;color:#1B5E20;border:1px solid #A5D6A7;
   }
   .review .ben .bi{font-size:9px}
-  .review .r-note{font-size:6px;color:#999;margin-top:1mm;line-height:1.3}
+  .review .r-note{font-size:6.5px;color:#999;margin-top:1mm;line-height:1.3}
 
-  /* 푸터 12mm */
+  /* 푸터 */
   .footer{
-    height:12mm;
     background:linear-gradient(135deg,#1B5E20,#2E7D32);
-    padding:0 5mm;
+    padding:2.5mm 5mm;flex:0 0 auto;
     display:flex;justify-content:space-between;align-items:center;
-    margin-top:2mm;
   }
   .footer .as-box{
     background:rgba(255,255,255,0.95);border-radius:6px;
     padding:1.2mm 3mm;display:flex;align-items:center;gap:1.5mm;
   }
   .footer .as-box .ph-icon{font-size:11px}
-  .footer .as-box .ph-num{font-size:10px;font-weight:900;color:#1B5E20}
+  .footer .as-box .ph-num{font-size:11px;font-weight:900;color:#1B5E20}
   .footer .as-box .ph-label{font-size:6px;color:#666}
   .footer .copy{color:rgba(255,255,255,0.7);font-size:6px;text-align:right;line-height:1.4}
 
@@ -153,9 +154,7 @@
 </head>
 <body>
 
-<button class="print-btn" onclick="window.print()">
-  <span class="ico">🖨️</span> A5 인쇄
-</button>
+<button class="print-btn" onclick="window.print()"><span class="ico">🖨️</span> A5 인쇄</button>
 
 <div class="card">
 
@@ -245,10 +244,7 @@
   <div class="footer">
     <div class="as-box">
       <span class="ph-icon">📞</span>
-      <div>
-        <div class="ph-label">A/S 문의</div>
-        <div class="ph-num">010-3019-8259</div>
-      </div>
+      <div><div class="ph-label">A/S 문의</div><div class="ph-num">010-3019-8259</div></div>
     </div>
     <div class="copy">© 백두농기 | QR코드는 영구 유효합니다<br>내용은 사전 공지 없이 변경될 수 있습니다</div>
   </div>
