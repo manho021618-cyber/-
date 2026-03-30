@@ -40,7 +40,7 @@
     background:linear-gradient(135deg,#1B5E20 0%,#2E7D32 50%,#388E3C 100%);
     padding:5mm 6mm 4mm;
     display:flex;align-items:center;gap:4mm;
-    flex-shrink:0;position:relative;
+    flex-shrink:0;
   }
   .header .logo{
     height:14mm;background:rgba(255,255,255,0.95);
@@ -63,7 +63,7 @@
 
   /* ── QR 섹션 ── */
   .qr-section{
-    padding:3.5mm 5mm 2mm;flex-shrink:0;
+    padding:3.5mm 5mm 2.5mm;flex-shrink:0;
     background:linear-gradient(180deg,#f8fdf8,#ffffff);
   }
   .qr-title{
@@ -107,7 +107,7 @@
   .qr-item:nth-child(3) .badge{background:#FFEBEE;color:#C62828}
   .qr-item:nth-child(4) .badge{background:#E3F2FD;color:#1565C0}
 
-  /* ── 제품 특징 섹션 ── */
+  /* ── 제품 특징 ── */
   .features{
     padding:3mm 5mm 2.5mm;flex-shrink:0;
   }
@@ -126,9 +126,28 @@
   .feat .f-name{font-size:7.5px;font-weight:700;color:#1B5E20}
   .feat .f-desc{font-size:6px;color:#666;margin-top:0.3mm;line-height:1.4}
 
+  /* ── 안내 문구 ── */
+  .notice{
+    margin:2mm 5mm;padding:3mm 4mm;
+    background:linear-gradient(135deg,#E3F2FD,#BBDEFB);
+    border-radius:8px;border:1px solid #90CAF9;
+    flex-shrink:0;
+  }
+  .notice .n-title{
+    font-size:9px;font-weight:900;color:#1565C0;
+    text-align:center;margin-bottom:1.5mm;
+  }
+  .notice-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5mm 3mm}
+  .notice-item{
+    display:flex;align-items:center;gap:1.5mm;
+    font-size:7px;color:#333;
+  }
+  .notice-item .n-icon{font-size:11px;flex-shrink:0}
+  .notice-item strong{color:#1565C0}
+
   /* ── 리뷰 유도 ── */
   .review{
-    margin:2.5mm 5mm;padding:3.5mm 4mm;
+    margin:2mm 5mm;padding:3.5mm 4mm;
     background:linear-gradient(135deg,#FFF8E1,#FFFDE7);
     border:1.5px dashed #FFB300;border-radius:10px;
     text-align:center;flex-shrink:0;
@@ -153,30 +172,10 @@
   .review .ben .bi{font-size:9px}
   .review .r-note{font-size:6px;color:#999;margin-top:1mm;line-height:1.4}
 
-  /* ── 관리 팁 ── */
-  .tips{
-    padding:2.5mm 5mm;flex-shrink:0;
-  }
-  .tips .t-title{
-    font-size:9px;font-weight:900;color:#1B5E20;
-    text-align:center;margin-bottom:1.5mm;
-    padding-bottom:1mm;border-bottom:1px solid #e0e0e0;
-  }
-  .tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:2mm}
-  .tip{
-    display:flex;align-items:flex-start;gap:2mm;
-    padding:2mm 2.5mm;
-    background:#f5f5f0;border-radius:6px;
-    border:1px solid #e8e8e8;
-  }
-  .tip .t-icon{font-size:14px;flex-shrink:0;margin-top:0.3mm}
-  .tip .t-text .t-name{font-size:7.5px;font-weight:700;color:#333}
-  .tip .t-text .t-desc{font-size:6px;color:#777;line-height:1.4;margin-top:0.2mm}
-
   /* ── 하단 ── */
   .footer{
     background:linear-gradient(135deg,#1B5E20,#2E7D32);
-    padding:3mm 5mm;
+    padding:3.5mm 5mm;
     display:flex;justify-content:space-between;align-items:center;
     flex-shrink:0;margin-top:auto;
   }
@@ -193,7 +192,7 @@
     body{background:#fff!important;min-height:auto;display:block}
     .print-btn{display:none!important}
     .card{width:148mm;height:210mm;margin:0;box-shadow:none;border-radius:0;page-break-inside:avoid}
-    .header,.footer,.qr-item::before,.deco,.review,.features,.tips,.feat{
+    .header,.footer,.qr-item::before,.deco,.review,.features,.notice,.feat{
       -webkit-print-color-adjust:exact;print-color-adjust:exact;
     }
   }
@@ -208,7 +207,7 @@
 <div class="card">
   <div class="deco d1"></div>
 
-  <!-- 헤더 (가로 배치로 공간 절약) -->
+  <!-- 헤더 -->
   <div class="header">
     <img class="logo" src="https://lh3.googleusercontent.com/d/1BefjpCuZaWUO1MhiPH38-aHV-M7e4Wfu" alt="백두농기">
     <div class="title-area">
@@ -274,9 +273,32 @@
         <div class="f-desc">여성도 쉽게<br>조작 가능</div>
       </div>
       <div class="feat">
-        <div class="f-icon">⚙️</div>
-        <div class="f-name">간편한 관리</div>
-        <div class="f-desc">오일 교환만으로<br>오래 사용</div>
+        <div class="f-icon">🌾</div>
+        <div class="f-name">넓은 경운폭</div>
+        <div class="f-desc">약 43cm<br>효율적 작업</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 사용 전 안내 -->
+  <div class="notice">
+    <div class="n-title">📋 사용 전 꼭 확인하세요</div>
+    <div class="notice-grid">
+      <div class="notice-item">
+        <span class="n-icon">⛽</span>
+        <span><strong>연료:</strong> 무연 휘발유만 사용</span>
+      </div>
+      <div class="notice-item">
+        <span class="n-icon">🛢️</span>
+        <span><strong>엔진오일:</strong> 반드시 주입 후 시동</span>
+      </div>
+      <div class="notice-item">
+        <span class="n-icon">🧤</span>
+        <span><strong>보호장비:</strong> 장갑·보안경 착용</span>
+      </div>
+      <div class="notice-item">
+        <span class="n-icon">📖</span>
+        <span><strong>설명서:</strong> QR코드로 꼭 확인!</span>
       </div>
     </div>
   </div>
@@ -297,41 +319,6 @@
     </div>
     <div class="r-note">
       * 리뷰 캡처를 A/S 연락처로 보내주시면 혜택 적용 &nbsp;|&nbsp; * 포토/영상 리뷰 시 추가 혜택
-    </div>
-  </div>
-
-  <!-- 관리 팁 -->
-  <div class="tips">
-    <div class="t-title">🔧 간단 관리 팁</div>
-    <div class="tip-grid">
-      <div class="tip">
-        <div class="t-icon">🛢️</div>
-        <div class="t-text">
-          <div class="t-name">엔진오일 점검</div>
-          <div class="t-desc">사용 전 매번 오일량 확인<br>SAE 10W-30 사용</div>
-        </div>
-      </div>
-      <div class="tip">
-        <div class="t-icon">⛽</div>
-        <div class="t-text">
-          <div class="t-name">연료 관리</div>
-          <div class="t-desc">무연 휘발유만 사용<br>장기보관 시 연료 배출</div>
-        </div>
-      </div>
-      <div class="tip">
-        <div class="t-icon">🔌</div>
-        <div class="t-text">
-          <div class="t-name">점화플러그</div>
-          <div class="t-desc">F7RTC 규격<br>갭 0.6~0.7mm 유지</div>
-        </div>
-      </div>
-      <div class="tip">
-        <div class="t-icon">🫧</div>
-        <div class="t-text">
-          <div class="t-name">에어필터</div>
-          <div class="t-desc">50시간마다 세척<br>100시간마다 교체</div>
-        </div>
-      </div>
     </div>
   </div>
 
