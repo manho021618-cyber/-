@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>백두농기 안내카드 A5</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:148mm 210mm;margin:0}
+html,body{height:100%;font-family:'Noto Sans KR',sans-serif;background:#bbb;display:flex;justify-content:center;align-items:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pb{position:fixed;bottom:16px;right:16px;z-index:99;background:#222;color:#fff;border:none;border-radius:40px;padding:10px 22px;font:700 13px 'Noto Sans KR',sans-serif;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.3)}
+
+/* CARD */
+.c{width:148mm;height:210mm;background:#ffffff;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.15)}
+
+/* HEADER */
+.hd{background:#1B5E20;padding:5mm 6mm;display:flex;align-items:center;justify-content:space-between}
+.hd .left{display:flex;align-items:center;gap:3.5mm}
+.hd img{height:14mm;background:#fff;padding:1.2mm 2.5mm;border-radius:4px}
+.hd h1{color:#fff;font-size:18px;font-weight:900;letter-spacing:-.3px}
+.hd .md{display:inline-block;margin-top:.8mm;background:#FF6F00;font-size:10px;font-weight:700;padding:.6mm 3.5mm;border-radius:8px;color:#fff}
+.hd .as-txt{color:rgba(255,255,255,.85);font-size:9px;text-align:right;line-height:1.5}
+.hd .as-txt b{font-size:12px;color:#fff;display:block}
+
+/* HERO */
+.hero{text-align:center;padding:5mm 6mm 3mm;background:linear-gradient(180deg,#f0f7f0 0%,#fff 100%)}
+.hero h2{font-size:22px;font-weight:900;color:#1B5E20;letter-spacing:-.5px;line-height:1.35}
+.hero h2 span{color:#E65100}
+.hero .sub{font-size:10px;color:#888;margin-top:1.5mm}
+
+/* QR AREA */
+.qa{padding:2mm 6mm 3mm;flex:1;display:flex;flex-direction:column;justify-content:center}
+.qg{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm 5mm}
+.qi{background:#fafafa;border:1.5px solid #e8e8e8;border-radius:12px;padding:3.5mm;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;transition:box-shadow .2s}
+.qi:hover{box-shadow:0 2px 12px rgba(27,94,32,.12)}
+.qi img{width:26mm;height:26mm;border:2px solid #e0e0e0;border-radius:8px;background:#fff;padding:.5mm}
+.qi .lb{font-size:13px;font-weight:900;margin-top:2mm}
+.qi:nth-child(1) .lb{color:#1B5E20}
+.qi:nth-child(2) .lb{color:#E65100}
+.qi:nth-child(3) .lb{color:#C62828}
+.qi:nth-child(4) .lb{color:#1565C0}
+.qi .ds{font-size:8px;color:#999;margin-top:.5mm}
+.qi .bg{display:inline-block;font-size:7px;font-weight:700;padding:.3mm 2.5mm;border-radius:6px;margin-top:1mm}
+.qi:nth-child(1) .bg{background:#E8F5E9;color:#2E7D32}
+.qi:nth-child(2) .bg{background:#FFF3E0;color:#E65100}
+.qi:nth-child(3) .bg{background:#FFEBEE;color:#C62828}
+.qi:nth-child(4) .bg{background:#E3F2FD;color:#1565C0}
+/* number badge */
+.qi .num{position:absolute;top:2mm;left:2.5mm;width:5mm;height:5mm;background:#1B5E20;color:#fff;border-radius:50%;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;line-height:1}
+.qi:nth-child(2) .num{background:#E65100}
+.qi:nth-child(3) .num{background:#C62828}
+.qi:nth-child(4) .num{background:#1565C0}
+
+/* DIVIDER */
+.dv{margin:0 6mm;height:.5px;background:linear-gradient(90deg,transparent,#ccc,transparent)}
+
+/* NOTICE BAR */
+.nb{margin:2.5mm 6mm;padding:2.5mm 4mm;background:#FFF8E1;border-left:3px solid #FFB300;border-radius:0 6px 6px 0;display:flex;align-items:center;gap:3mm}
+.nb .nt{font-size:9.5px;font-weight:700;color:#E65100;white-space:nowrap}
+.nb .nd{font-size:7.5px;color:#666;line-height:1.5}
+
+/* REVIEW */
+.rv{margin:0 6mm 2.5mm;padding:3mm 4mm;background:#f5f5f5;border-radius:10px;display:flex;align-items:center;gap:4mm}
+.rv .rl{flex-shrink:0;text-align:center}
+.rv .rl .sr{font-size:13px;letter-spacing:.5px}
+.rv .rl .rt{font-size:11px;font-weight:900;color:#1B5E20;margin-top:.3mm;white-space:nowrap}
+.rv .rr{flex:1}
+.rv .rr .rh{display:inline-block;background:#E65100;color:#fff;font-size:8px;font-weight:700;padding:.6mm 3mm;border-radius:8px;margin-bottom:1mm}
+.rv .bf{display:flex;gap:2mm;flex-wrap:wrap}
+.rv .bn{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:.5mm 2.5mm;font-size:7px;font-weight:700;color:#555;display:flex;align-items:center;gap:.5mm}
+.rv .bn i{font-style:normal;font-size:9px}
+.rv .rn{font-size:5.5px;color:#aaa;margin-top:.8mm}
+
+/* FOOTER */
+.ft{background:#222;padding:2.5mm 6mm;display:flex;justify-content:space-between;align-items:center}
+.ft .fl{display:flex;align-items:center;gap:2mm;color:#fff}
+.ft .fl .pi{font-size:14px}
+.ft .fl .pn{font-size:13px;font-weight:900}
+.ft .fl .pl{font-size:6px;color:#aaa}
+.ft .cp{font-size:6px;color:#666;text-align:right;line-height:1.5}
+
+@media print{
+html,body{height:auto;background:#fff!important;display:block}
+.pb{display:none!important}
+.c{width:148mm;height:210mm;margin:0;box-shadow:none;page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<button class="pb" onclick="window.print()">🖨️ A5 인쇄</button>
+<div class="c">
+
+  <!-- HEADER -->
+  <div class="hd">
+    <div class="left">
+      <img src="https://lh3.googleusercontent.com/d/1BefjpCuZaWUO1MhiPH38-aHV-M7e4Wfu" alt="백두농기">
+      <div>
+        <h1>미니 관리기 종합 안내</h1>
+        <span class="md">4행정 198cc</span>
+      </div>
+    </div>
+    <div class="as-txt">A/S 문의<b>010-3019-8259</b></div>
+  </div>
+
+  <!-- HERO TEXT -->
+  <div class="hero">
+    <h2>사용설명서는<br><span>QR코드</span>를 스캔해주세요.</h2>
+    <div class="sub">📱 핸드폰 카메라로 QR코드를 비추면 바로 접속됩니다</div>
+  </div>
+
+  <!-- QR CARDS -->
+  <div class="qa">
+    <div class="qg">
+      <div class="qi">
+        <span class="num">1</span>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://manho021618-cyber.github.io/-/" alt="QR">
+        <div class="lb">📖 사용설명서</div>
+        <div class="ds">조립 · 시동 · 유지보수</div>
+        <span class="bg">웹 설명서</span>
+      </div>
+      <div class="qi">
+        <span class="num">2</span>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://manho021618-cyber.github.io/-/garden.html" alt="QR">
+        <div class="lb">🌱 텃밭 재배 달력</div>
+        <div class="ds">월별 파종 · 수확 시기</div>
+        <span class="bg">재배 가이드</span>
+      </div>
+      <div class="qi">
+        <span class="num">3</span>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.youtube.com/watch?v=5Jo2-Y1QgVI" alt="QR">
+        <div class="lb">🎬 초기 시동 영상</div>
+        <div class="ds">영상으로 쉽게 따라하기</div>
+        <span class="bg">YouTube</span>
+      </div>
+      <div class="qi">
+        <span class="num">4</span>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://www.youtube.com/watch?v=z4h5VyxXMPE" alt="QR">
+        <div class="lb">🔧 초기 조립 영상</div>
+        <div class="ds">영상으로 쉽게 따라하기</div>
+        <span class="bg">YouTube</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dv"></div>
+
+  <!-- NOTICE BAR -->
+  <div class="nb">
+    <div class="nt">⚠️ 사용 전 확인</div>
+    <div class="nd">
+      <b>⛽ 연료:</b> 무연 휘발유만 &nbsp;|&nbsp;
+      <b>🛢️ 오일:</b> 반드시 주입 후 시동 &nbsp;|&nbsp;
+      <b>🧤 보호장비:</b> 장갑·보안경 착용 &nbsp;|&nbsp;
+      <b>📖 설명서:</b> QR 꼭 확인
+    </div>
+  </div>
+
+  <!-- REVIEW -->
+  <div class="rv">
+    <div class="rl">
+      <div class="sr">⭐⭐⭐⭐⭐</div>
+      <div class="rt">후기를 들려주세요!</div>
+    </div>
+    <div class="rr">
+      <span class="rh">📝 리뷰 작성 시 혜택</span>
+      <div class="bf">
+        <div class="bn"><i>🎁</i> 다음 구매 5% 할인</div>
+        <div class="bn"><i>🔧</i> 소모품 10% 할인</div>
+        <div class="bn"><i>📞</i> A/S 우선 상담</div>
+      </div>
+      <div class="rn">* 리뷰 캡처를 A/S로 보내주시면 혜택 적용 | * 포토/영상 리뷰 시 추가 혜택</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="ft">
+    <div class="fl">
+      <span class="pi">📞</span>
+      <div><div class="pl">A/S 문의</div><div class="pn">010-3019-8259</div></div>
+    </div>
+    <div class="cp">© 백두농기 | QR코드는 영구 유효합니다</div>
+  </div>
+
+</div>
+</body>
+</html>
